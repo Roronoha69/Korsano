@@ -44,9 +44,9 @@ export default ({
   description = "Pour toutes questions suppléménetaires, rendez-vous sur la page contact",
   faqs = [
     {
-      question: "Qui produit les plans personalisés ?",
+      question: "Est-ce que les programmes sont adaptés pour les femmes ?",
       answer:
-      "Nos plans personnalisés sont faits par un coach professionnel diplômé. Plus de manière indirecte, car il contribue à l'amélioration de l'algorithme"    },
+      "Nos programmes sont personnalisés entièrement pour les hommes comme pour les femmes."    },
     {
       question: "Y'a t'il une option pour les végétariens ?",
       answer:
@@ -58,7 +58,7 @@ export default ({
     {
       question: "Est-ce que je pourrais recommencer le questionaire une fois que j'aurais acheter ?",
       answer:
-      "Oui, il est possible de refaire le questionnaire une fois. Pour que tu puisses par exemple avoir un programme de sèche et un de prisse de masse."    }
+      "Oui, il est possible de refaire le questionnaire autant de fois que nécéssaire"    }
   ]
 }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);

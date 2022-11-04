@@ -9,6 +9,17 @@ import logo from "images/logo.PNG";
 import googleIconImageSrc from "images/google-icon.png";
 import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as SignUpIcon } from "feather-icons/dist/icons/user-plus.svg";
+import {Link} from 'react-router-dom'
+import {useState} from 'react'
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../myComponents/firebase-config";
+
+
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
@@ -74,7 +85,42 @@ export default ({
   tosUrl = "/cgu",
   privacyPolicyUrl = "/vie-prive",
   signInUrl = "/login"
-}) => (
+}) => { 
+  
+  
+  
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+  const register = async () => {
+    try {
+      console.log("putana");
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      console.log(user);
+     
+
+    } catch (error) {
+      console.log(error.message);
+      window.location = 'signup '
+    }
+  };
+
+
+ 
+  
+  return (
   <AnimationRevealPage>
     <Container>
       <Content>
@@ -99,12 +145,20 @@ export default ({
                 <DividerText>S'inscrire avec e-mail</DividerText>
               </DividerTextContainer>
               <Form>
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Mot de passe" />
-                <SubmitButton type="submit">
+                <Input type="email" placeholder="Email"
+            onChange={(event) => {
+            setRegisterEmail(event.target.value);
+          }} />
+                <Input type="password" placeholder="Password..." onChange={(event) => {
+            setRegisterPassword(event.target.value);
+          }}/>
+
+          <Link to='/' onClick={() => register()}>
+         
+                <SubmitButton type="submit"  >
                   <SubmitButtonIcon className="icon" />
                   <span className="text">{submitButtonText}</span>
-                </SubmitButton>
+                </SubmitButton></Link>
                 <p tw="mt-6 text-xs text-gray-600 text-center">
                   J'accepte les {" "}
                   <a href={tosUrl} tw="border-b border-gray-500 border-dotted">
@@ -134,3 +188,4 @@ export default ({
     </Container>
   </AnimationRevealPage>
 );
+                };

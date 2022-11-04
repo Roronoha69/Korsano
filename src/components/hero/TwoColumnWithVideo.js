@@ -59,10 +59,10 @@ const StyledModal = styled(ReactModalAdapter)`
 const CloseModalButton = tw.button`absolute top-0 right-0 mt-8 mr-8 hocus:text-primary-500`;
 
 export default ({
-  heading = "L'APPLICATION SE REFAIT UNE BEAUTÉ",
- description="Désolé, cette partie du site est momentanément indisponible. Les personnes déjà clientes ont encore accès a leur plans personalisés.",
+  heading = "EN COURS DE MAINTENANCE",
+ description="Nous travaillons pour vous fournir un service de qualité, cette fonctionalité sera bientot disponible",
   primaryButtonText="Retour",
-  primaryButtonUrl="/",
+  primaryButtonUrl="/questions",
   watchVideoButtonText="Watch Video",
   watchVideoYoutubeUrl="https://www.youtube.com/embed/_GuOjXYl5ew",
   imageSrc=DesignIllustration,

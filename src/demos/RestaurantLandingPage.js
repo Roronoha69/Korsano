@@ -42,7 +42,8 @@ export default () => {
     <AnimationRevealPage>
       <Hero
         heading={<>PLAN NUTRITIONNEL<Incline><HighlightedText> PERSONNALISÉ</HighlightedText></Incline></>}
-        description="Un système unique qui permet de générer des plans nutritionels adapté à vos objectifs et à vos péférences."
+        description="Un nouveau système unique qui permet de générer des plans nutritionels adapté à vos besoin en macronutriments."
+        //description="Un nouveau système unique qui permet de générer des plans nutritionels adapté à vos besoin en macronutriments."
         imageSrc="https://cdn.dribbble.com/userupload/2850124/file/original-999c98affe282a81c153721d3d5b872b.jpeg?compress=1&resize=1200x900"
         imageCss={imageCss}
         imageDecoratorBlob={true}
@@ -66,13 +67,13 @@ export default () => {
             Tous les macronutriments dont vous avez besoin sont soigneusement calculés par notre algorithme.
             <br />
             <br />
-            Notre questionnaire de 20 questions analyse votre mode de vie et vous construit une diète sur mesure de 14 jours.</Description>
+            Notre questionnaire vous construit une diète sur mesure de 30 jours.</Description>
         }
         buttonRounded={false}
         textOnLeft={false}
         primaryButtonUrl='/tarifs'
         primaryButtonText="Découvrir"
-        imageSrc={Phone}
+        imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15778281/media/08b44583438e4ffd3cce0426e0ca68f1.jpeg?compress=1&resize=1000x750&vertical=top"
         imageCss={imageCss}
         imageDecoratorBlob={true}
         imageDecoratorBlobCss={tw`left-1/2 -translate-x-1/2 md:w-32 md:h-32 opacity-25`}

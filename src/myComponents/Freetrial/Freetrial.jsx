@@ -3,11 +3,12 @@ import './Freetrial.scss'
 import {useState} from 'react'
 import Footer from "components/footers/MiniCenteredFooter2.js";
 import Feature from "components/features/TwoColSingleFeatureWithStats3";
-import Header from "components/headers/light2.js";
+import Header from "components/headers/light.js";
 import styled from "styled-components";
 //import Header from "./header2";
-import gratuit from '../../images/korsanoPremium.png'
+import gratuit from '../../images/korsanoblack.png'
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/'
+import tw from "twin.macro";
 
 
 {/* <p>{taille}</p>
@@ -25,6 +26,20 @@ import gratuit from '../../images/korsanoPremium.png'
 
 function Freetrial() {
 
+  const Incline = styled.div`
+  --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: -12deg;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    margin-right: 20px;
+  `;
+
+  const HighlightedText = tw.span`bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`;
+
   const [n, setNumber] = useState(1)
   const [quizStart, setQuizStarted] = useState(true);
   
@@ -35,6 +50,7 @@ function Freetrial() {
   const [work, setWork] = useState()
   const [actv, setActv] = useState()
   const [gender, setGender] = useState()
+  const [broke, setBroke] = useState()
 
   const [taille, setTaille] = useState()
   const [age, setAge] = useState()
@@ -57,7 +73,8 @@ function Freetrial() {
 
   const [,] =useState()
 
-  const nap = [0, 0, 1.375, 1.4675, 1.56, 1.6, 1.64, 1.73, 1.82]
+  const Exnap = [0, 0, 1.375, 1.4675, 1.56, 1.6, 1.64, 1.73, 1.82]
+  const nap = [0, 0, 1.2, 1.287, 1.375, 1.465, 1.55, 1.64, 1.725]
 
   function hundleStart() {
     setQuizStarted(true)
@@ -133,7 +150,13 @@ function Freetrial() {
     setGender('femme')
   }
   
+if (x==31){
+  setBroke(true)
+}
 
+if (x==32){
+  setBroke(false)
+}
 
 
 
@@ -162,7 +185,7 @@ function Freetrial() {
     setNumber(n+1)
 
     if (gender == 'femme'){
-      setMb(Math.round((9.740*poid + 172.9*taille - 4.7373*age + 667.051)/10)*10)
+      setMb(Math.round  ((9.740*poid + 172.9*taille - 4.7373*age + 667.051)/10)  *10)
 
       setBej(Math.round((nap[actv+work]*(9.740*poid + 1.729*taille - 4.7373*age + 667.051))/10)*10-100)
     }
@@ -191,9 +214,6 @@ function Freetrial() {
     
   } 
  
-
-
-
   console.log(bodyfat);
   return (
     <div className='free'>
@@ -209,103 +229,101 @@ function Freetrial() {
     <div className={`quiz ${quizStart? '':'invisible'}`}>
 
       <div className={`questions ${n==1? '':'invisible'}`}>
-      <h1>Quels sont tes objectifs estétiques ?</h1>
-      <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button>
-      <button onClick={()=> hundleQuizz(2)}>Prise de masse.</button>
+         <h1>Quels sont tes objectifs ?</h1>
+      {/* <button onClick={()=> hundleQuizz(4)}>Maximiser ma testostérone.</button> */}
+      <button onClick={()=> hundleQuizz(5)}>Améliorer ma productivité.</button>
+      <button onClick={()=> hundleQuizz(6)}>Mieux dormir et récuperer.</button>
       
-      <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button>
 
       </div>
 
       <div className={`questions ${n==2? '':'invisible'}`}>
-      <h1>As-tu d'autres objectifs ?</h1>
-      <button onClick={()=> hundleQuizz(4)}>Maximiser ma testostérone.</button>
-      <button onClick={()=> hundleQuizz(5)}>Améliorer les capacité du cerveau.</button>
-      <button onClick={()=> hundleQuizz(6)}>Mieux dormir et récuperer.</button>
-      </div>
-
-      <div className={`questions ${n==3? '':'invisible'}`}>
-      <h1>Es-tu vegetarien ? ?</h1>
+     <h1>Es-tu vegetarien ?</h1>
       <button onClick={()=> hundleQuizz(7)}>Oui</button>
       <button onClick={()=> hundleQuizz(8)}>Non</button>
       </div>
 
+      <div className={`questions ${n==3? '':'invisible'}`}>
+      <h1>Tes objectifs estétiques ? ( sèche pas encore disponible )</h1>
+      {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> */}
+      <button onClick={()=> hundleQuizz(2)}>Prise de masse.</button>
+      
+      {/* <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button> */}
+      </div>
+
       <div className={`questions ${n==4? '':'invisible'}`}>
-      <h1>Consome tu de la whey ?</h1>
-      <button onClick={()=> hundleQuizz(9)}>Oui</button>
-      <button onClick={()=> hundleQuizz(10)}>Non</button>
+        <h1>A quel fréquence te sent-tu fatigué au cour de la journée ?</h1>
+      <button onClick={()=> setNumber(n+1)}>Souvent</button>
+      <button onClick={()=> setNumber(n+1)}>Parfois</button>
+      <button onClick={()=> setNumber(n+1)}>Presque jamais</button>
+
       </div>
 
       <div className={`questions ${n==5? '':'invisible'}`}>
-      <h1>As-tu des coup de fatigue dans la journée ?</h1>
-      <button onClick={()=> setNumber(n+1)}>Tout les jours.</button>
-      <button onClick={()=> setNumber(n+1)}>Souvent.</button>
-      <button onClick={()=> setNumber(n+1)}>Rarement.</button>
+        <h1>Quel est ton budjet courses ?</h1>
+      <button onClick={()=> hundleQuizz(31)}>Dépenser le moins possible.</button>
+      <button onClick={()=> hundleQuizz(32)}>Budget normal mais optimisé.</button>
       </div>
 
       <div className={`questions ${n==6? '':'invisible'}`}>
-      <h1>Quel est ton budject courses ?</h1>
-      <button onClick={()=> hundleQuizz(31)}>Dépenser le moins possible.</button>
-      <button onClick={()=> hundleQuizz(32)}>Budget normal mais optimisé</button>
+        <h1>Tu es ?</h1>
+      <button onClick={()=> hundleQuizz(19)}>Un homme</button>
+      <button onClick={()=> hundleQuizz(20)}>Une femme</button>
       </div>
-
 
 
       <div className={`questions ${n==7? '':'invisible'}`}>
-      <h1>Ton travail est plutot :</h1>
-      <button onClick={()=> hundleQuizz(11)}>Sédentaire</button>
-      <button onClick={()=> hundleQuizz(12)}>Un peu actif</button>
-      <button onClick={()=> hundleQuizz(13)}>Actif, je marche beaucoup</button>
-      <button onClick={()=> hundleQuizz(14)}>Physique et/ou port de charges</button>
-      </div>
-
-      <div className={`questions ${n==8? '':'invisible'}`}>
-      <h1>Quel est ton niveau d'activité physique</h1>
+       <h1>Quel est ton niveau d'activité physique ?</h1>
       <button onClick={()=> hundleQuizz(15)}>Le néant</button>
       <button onClick={()=> hundleQuizz(16)}>1 à 3 fois par semaine</button>
       <button onClick={()=> hundleQuizz(17)}>3 à 5 fois par semaine</button>
       <button onClick={()=> hundleQuizz(18)}>6+ par semaine</button>
       </div>
 
+      <div className={`questions ${n==8? '':'invisible'}`}>
+      <h1>Ton travail est plutot :</h1>
+      <button onClick={()=> hundleQuizz(11)}>Physiquement calme</button>
+      <button onClick={()=> hundleQuizz(12)}>Un peu actif</button>
+      <button onClick={()=> hundleQuizz(13)}>Actif, je marche beaucoup</button>
+      <button onClick={()=> hundleQuizz(14)}>Physique ou port de charges</button>
+      </div>
+
       <div className={`questions ${n==9? '':'invisible'}`}>
-      <h1>tu es ?</h1>
-      <button onClick={()=> hundleQuizz(19)}>Un homme.</button>
-      <button onClick={()=> hundleQuizz(20)}>Une femme.</button>
+     
+       <h1>On vas calculer tes besoins en calories :</h1>
+            <form action="">
+              <input type="number" placeholder='Taille (cm)' onChange={e => setTaille(e.target.value)}/>
+              <input type="number" placeholder='Poid (kg)' onChange={e => setPoid(e.target.value)}/>
+              <input type="number" placeholder='Age (années)' onChange={e => setAge(e.target.value)}/>
+            </form>
+            <p onClick={()=> handleResult() }>
+              Suivant
+            </p>
       </div>
 
       <div className={`questions ${n==10? '':'invisible'}`}>
-      <h1>On vas calculer tes besoin en calories :</h1>
-      <form action="">
-        <input type="number" placeholder='Taille (cm)' onChange={e => setTaille(e.target.value)}/>
-        <input type="number" placeholder='Poid (kg)' onChange={e => setPoid(e.target.value)}/>
-        <input type="number" placeholder='Age (années)' onChange={e => setAge(e.target.value)}/>
-      </form>
-      <p onClick={()=> handleResult() }>
-        Suivant
-      </p>
+       <h1>Veux tu que l'on calcul ton % de graisse ?</h1>
+      <button onClick={()=> setNumber(n+1)}>Oui</button>
+      <button onClick={()=> hundleresult3()}>Non</button>   
       </div>
 
       <div className={`questions ${n==11? '':'invisible'}`}>
-      <h1>Veux tu que l'on calculte ton % de graisse ?</h1>
-      <button onClick={()=> setNumber(n+1)}>Oui.</button>
-      <button onClick={()=> hundleresult3()}>Non.</button>     
-      </div>
-
-      <div className={`questions ${n==12? '':'invisible'}`}>
-      <h1>Calcul du % de graisse selon la méthode de l'US NAVY.</h1>
+       <h1>Calcul du % de graisse selon la méthode de l'US NAVY.</h1>
       <form action="">
         <input type="number" placeholder='Tour de taille (nombril)' onChange={e => setTdt(e.target.value)}/>
-        <input type="number" placeholder='Tout de cou (depuis la base)' onChange={e => setTdc(e.target.value)}/>
-        <input className={gender=='homme'?'invisible':''} type="number" placeholder='Hanche' onChange={e => setHanche(e.target.value)}/>
+        <input type="number" placeholder='Tour de cou (depuis la base)' onChange={e => setTdc(e.target.value)}/>
+        <input className={gender=='homme'?'invisible':''} type="number" placeholder='Tour de hanche' onChange={e => setHanche(e.target.value)}/>
       </form>
       <p onClick={()=> handleResult2() }>
         Résultats
       </p>
       </div>
+
+      
 </div>
 
 
-    <div className={`result ${n==13? '' :'invisible'}`}>    
+    <div className={`result ${n==12? '' :'invisible'}`}>    
     <div className="not-lock">
       <div className="not-lock-text">
 
@@ -313,11 +331,11 @@ function Freetrial() {
         statistics={[
           {
             key: "Besoin en calories pour maintien",
-            value: `${bej} cal/j`
+            value: `${bej}cal`
           },
           {
             key: `Besoin pour une ${goal}`,
-            value: `${fixGaol2} cal/j`
+            value: `${fixGaol2}cal`
           },
           {
             key: "Besoin en Protéine selon tes objectifs",
@@ -330,8 +348,782 @@ function Freetrial() {
         ]}
 
         />
-      {/* <h1>Vos resultats :</h1>
-      <h2>Analyse de vos besoin</h2>
+        <div className='day-menu'>
+
+          
+
+
+            {/* <div className={fixGaol2 >= 2000 && fixGaol2 < 2100 && goal == "prise de masse"? '':'invisible'}> */}
+            <div className={ fixGaol2 <=2000 &&fixGaol2 < 2100 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+           
+            <div className="meals">
+              <div className="first-half-day">
+              <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                
+                <p>Shakeur</p>
+                <p>1/2 scop de whey</p>
+                <p>300ml de lait</p>
+                <p>1 banane</p>
+                <p>20g de flocon d'avoine</p>
+
+                
+                {broke ? (
+                  <div>
+                  <p>25g Beurre de cacahuète</p>               
+                <p>30g de datte sechée</p>
+                </div>
+                  ) : (
+                <div>
+                 <p>puré d'amandes</p>
+                <p> groseilles</p>
+                </div>
+                  )}
+
+{/*                 
+                <p>1 yaourt a la grec</p> */}
+
+                 {/* 
+                Option non-éco
+               
+                */}
+                {/* 680  30g prot */}
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>2 oeufs</p> 
+                {/* 200 cal */}
+                <p>80g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+             <h3> <Incline><HighlightedText>Colation</HighlightedText></Incline></h3>
+                <p>( repartir dans la journée si besoin )</p>
+               <p>Une dizaine d'amandes</p>
+               <p>Une Banane</p>
+               <p>1 Barre de cérélales</p>
+                {/* 300 */}
+               
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                
+                <p>2 wraps</p>
+                {/* 330 cal*/}
+                <p>100g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+
+                <p>50g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2100 && fixGaol2 < 2200 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1/2 scop de whey</p>
+                <p>300ml de lait</p>
+                <p>1 banane</p>
+                <p>25g Beurre de cacahuète</p>
+                <p>20g de flocon d'avoine</p>
+                <p>30g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>2 oeufs</p> 
+                {/* 200 cal */}
+                <p>85g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3>Colation ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>
+               <p>Une Banane</p>
+               <p>1 Barre de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>2 wraps</p>
+                {/* 330 cal*/}
+                <p>100g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>50g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2200 && fixGaol2 < 2300 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1/2 scop de whey</p>
+                <p>300ml de lait</p>
+                <p>1 banane</p>
+                <p>25g Beurre de cacahuète</p>
+                <p>20g de flocon d'avoine</p>
+                <p>30g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>85g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>
+               <p>Une Banane</p>
+               <p>1 Barre de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>2 wraps</p>
+                {/* 330 cal*/}
+                <p>100g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>50g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2300 && fixGaol2 < 2400 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>300ml de lait</p>
+                <p>1 banane</p>
+                <p>25g Beurre de cacahuète</p>
+                <p>20g de flocon d'avoine</p>
+                <p>30g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>85g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>              
+               <p>50g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>2 wraps</p>
+                {/* 330 cal*/}
+                <p>100g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>50g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2400 && fixGaol2 < 2500 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>300ml de lait</p>
+                <p>1 banane</p>
+                <p>25g Beurre de cacahuète</p>
+                <p>20g de flocon d'avoine</p>
+                <p>30g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>85g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>              
+               <p>50g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>100g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>50g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2500 && fixGaol2 < 2600 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>300ml de lait</p>
+                <p>1 banane</p>
+                <p>25g Beurre de cacahuète</p>
+                <p>20g de flocon d'avoine</p>
+                <p>30g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>85g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>              
+               <p>50g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>130g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>50g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2600 && fixGaol2 < 2700 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>300ml de lait</p>
+                <p>1 banane</p>
+                <p>30g Beurre de cacahuète</p>
+                <p>30g de flocon d'avoine</p>
+                <p>50g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>85g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>              
+               <p>50g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>130g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>50g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2700 && fixGaol2 < 2800 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>350ml de lait</p>
+                <p>1 banane</p>
+                <p>30g Beurre de cacahuète</p>
+                <p>30g de flocon d'avoine</p>
+                <p>50g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>95g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>              
+               <p>50g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>130g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>75g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2800 && fixGaol2 < 2900 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>350ml de lait</p>
+                <p>1 banane</p>
+                <p>30g Beurre de cacahuète</p>
+                <p>30g de flocon d'avoine</p>
+                <p>50g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>95g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p>              
+               <p>80g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>130g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>75g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 2900 && fixGaol2 < 3000 && goal ? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>350ml de lait</p>
+                <p>1 banane</p>
+                <p>30g Beurre de cacahuète</p>
+                <p>30g de flocon d'avoine</p>
+                <p>50g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>95g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une dizaine d'amandes</p> 
+               <p>1 bananes</p>             
+               <p>80g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>130g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>75g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 >= 3000 && fixGaol2 < 3000 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>350ml de lait</p>
+                <p>1 banane</p>
+                <p>30g Beurre de cacahuète</p>
+                <p>30g de flocon d'avoine</p>
+                <p>50g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>95g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une poigné d'amandes</p> 
+               <p>1 bananes</p>             
+               <p>80g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>160g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>75g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+
+            <div className={fixGaol2 >= 3100 && fixGaol2 < 3200 && goal == "prise de masse"? '':'invisible'}>
+            <h1> <Incline><HighlightedText>PLAN NUTRITIONEL</HighlightedText></Incline>  pour {goal} à {fixGaol2} Kcal</h1>
+            <div className="meals">
+              <div className="first-half-day">
+                <h3><Incline><HighlightedText>Matin</HighlightedText></Incline></h3>
+                <p>Shakeur</p>
+
+                <p>1 scop de whey</p>
+                <p>350ml de lait</p>
+                <p>1 banane</p>
+                <p>30g Beurre de cacahuète</p>
+                <p>30g de flocon d'avoine</p>
+                <p>50g de datte sechée</p>                              
+                <p>1 yaourt a la grec</p> 
+
+                 {/* 
+                Option non-éco
+                - puré d'amandes
+                - groseilles
+
+                */}
+                {/* 680  30g prot */}
+
+                <h3><Incline><HighlightedText>Midi</HighlightedText></Incline></h3>
+                <p>Quelques crudités (carrorte, concombre, etc)</p>
+                {/* 30 cal */}
+                <p>3 oeufs</p> 
+                {/* 200 cal */}
+                <p>95g (cru) de riz</p>
+                {/* 280cal */}
+                <p>Sauce tomate ou sauce soja</p>
+
+                {/* 520 cal 18g prot*/}
+              </div>
+
+              <div className="second-half-day">
+                
+               <h3><Incline><HighlightedText>Colation</HighlightedText></Incline> ( repartir dans la journée si besoin )</h3>
+               <p>Une poigné d'amandes</p> 
+               <p>1 bananes</p>             
+               <p>120g de cérélales</p>
+                {/* 300 */}
+               
+
+                <h3><Incline><HighlightedText>Soir</HighlightedText></Incline></h3>
+                <p>3 wraps</p>
+                {/* 330 cal*/}
+                <p>160g saumon (cuit ou fumé )</p>
+
+                {/* 180cal */}
+                 
+                <p>tomate et salade a volonté </p>
+                <p>Vinegrette et/ou jus citron</p> 
+                <p>100g de légumineuse</p>
+                <p>75g de Fromage frais </p>
+                {/* 100 cal */}
+                {/*  660 cal 40g*/}
+                
+
+              </div>
+            </div>
+            </div>
+
+            <div className={fixGaol2 > 3500 || fixGaol2 < 1500 || fixGaol2== NaN? '':'invisible' }>
+              <h1>Un probleme est survenu</h1>
+            </div>
+
+        </div>
+    
+       {/*<h2>Analyse de vos besoin</h2>
       <p>Métabolisme basal : {mb} cal/j</p>
       <p>Vos besoins journaliers : {bej} cal/j</p>
 
@@ -352,19 +1144,25 @@ function Freetrial() {
     <div className='wrap-all-the-text'>
 
   
-    <div className={`text ${n == 13? '' :'invisible'}` }>
+    <div className={`text ${n == 12? '' :'invisible'}` }>
     <img src={gratuit} alt="" />
     <div className={`text-card` }>
       <div className="text-card-wrapper">
-      <h2> <b>INCLU</b>
+      <h2> <b>PROGRAMME 30j</b>
       </h2>
     
 <b>
-      <p> {/* <FontAwesomeIcon icon="fa-solid fa-check" /> */}🗸 2 semaines de plan nutritionnel sur mesure et détaillés </p>
-          
-      <p> {/* <FontAwesomeIcon icon="fa-solid fa-check" />  */}🗸 Des conseils spéciaux pour ta progression</p>
 
-      <p> {/* <FontAwesomeIcon icon="fa-solid fa-check" />  */}🗸 Des listes de courses adaptées à ton programme</p>
+
+
+
+
+
+      <p> {/* <FontAwesomeIcon icon="fa-solid fa-check" /> */}🗸 Rééquilibrage alimentaire</p>
+          
+      <p> {/* <FontAwesomeIcon icon="fa-solid fa-check" />  */}🗸 Diète adaptée à ton mode de vie, tes préférences et ton objectif</p>
+
+      <p> {/* <FontAwesomeIcon icon="fa-solid fa-check" />  */}🗸 Détail complet des calories et macronutriments</p>
       
       </b>
      <a href='/404' >
@@ -393,7 +1191,7 @@ function Freetrial() {
 }
 const HeaderStyle = styled.div`
 padding-top: 1rem;
-padding-bottom: 1rem;
+margin-bottom: 4rem;
 
 `
 

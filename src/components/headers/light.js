@@ -80,11 +80,11 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
     <NavLinks key={1}>
       <NavLink href="/contact">Nous contacter</NavLink>
 
-      <NavLink href="/tarifs">Tarifs</NavLink>
-
+      <NavLink href="/tarifs">Plans personalisés</NavLink>
+      
       <NavLink
       tw="lg:ml-12!"
-      
+      style={{cursor: 'pointer'}}
       onClick={() =>
         loginWithRedirect({
           screen_hint: "signup",
@@ -107,11 +107,12 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
     <NavLinks key={1}>
       <NavLink href="/contact">Nous contacter</NavLink>
 
-      <NavLink href="/tarifs">Tarifs</NavLink>
+      <NavLink href="/tarifs">Plans personalisés</NavLink>
 
+     
       <NavLink
       tw="lg:ml-12!"
-      
+      style={{cursor:'poiner'}}
       onClick={() => logout()}
     >
       Déconnection
@@ -122,7 +123,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       {/* <NavLink href="/login" tw="lg:ml-12!">
         Connection
       </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/free-trial">Essai gratuit</PrimaryLink>
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/error">Mon compte</PrimaryLink>
     </NavLinks>
   ];
 
@@ -140,7 +141,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   logoLink = logoLink || defaultLogoLink;
   links = links || defaultLinks;
 
-  if (!isLoading && user) {
+  if ( user) {
     links = defaultLinks2
   }
 

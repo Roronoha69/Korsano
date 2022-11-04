@@ -52,8 +52,6 @@ const Lex = styled.div`
 color: black;
 margin-top: 20px;
 margin-bottom: 10px;
-
-
 ` 
 const IllustrationContainer = tw.div`flex justify-center md:justify-end items-center relative max-w-3xl lg:max-w-none`;
 
@@ -98,15 +96,15 @@ export default ({
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const item = {
-    price: "price_1LKfF8HP0YfNGUskrgKhQ3fJ",
+    price: "price_1Lf3bnHP0YfNGUskNcZTr2jS",
     quantity: 1
   };
 
   const checkoutOptions = {
     lineItems: [item],
     mode: "payment",
-    successUrl: `${window.location.origin}/success`,
-    cancelUrl: `${window.location.origin}/cancel`
+    successUrl: `${window.location.origin}/404`,
+    cancelUrl: `${window.location.origin}/`
   };
 
   const redirectToCheckout = async () => {
@@ -153,7 +151,7 @@ export default ({
               <li>🗸 Des listes de courses adaptés et pour tous budjets</li>
               
             </ul></Paragraph>
-            <p> <b>17.99€</b></p>
+            <p> <b>5€</b></p>
             <Actions>
                {/* <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>  */}
 

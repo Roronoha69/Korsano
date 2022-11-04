@@ -6,6 +6,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
  import RestaurantLandingPage from "demos/RestaurantLandingPage.js";
  import Freetrial from "myComponents/Freetrial/Freetrial"
  import Error from "myComponents/Error/Error"
+ import Qcm from "myComponents/QCM/Qcm"
 
 
 /* Inner Pages */
@@ -51,6 +52,11 @@ export default function App() {
           <Freetrial />
         </Route> 
 
+
+        <Route path="/questions">
+          <Qcm />
+        </Route> 
+
         
   
 
@@ -91,11 +97,23 @@ export default function App() {
         <Route path='/cancel'>
           <Cancel />
         </Route>
+
+
+        <Route path='/register'>
+          <SignupPage />
+        </Route>
+
+
+        <Route path='/auth'>
+          <LoginPage />
+        </Route>
         
        <Route path="/">
           <RestaurantLandingPage />
         </Route>
 
+
+        
       </Switch>
       
       </Auth0ProviderWithHistory>

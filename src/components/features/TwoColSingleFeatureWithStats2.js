@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
-import StatsIllustrationSrc from "images/stats.png";
+import StatsIllustrationSrc from "images/food-line.png";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
 const Container = tw.div`relative`;
@@ -75,7 +75,7 @@ export default ({
   subheading = "Our Track Record",
   heading = (
     <>
-     <TropGros> TON ANALYSE <wbr /> <Incline><HighlightedText>MACRONUTRIMENTS</HighlightedText></Incline></TropGros>
+     <TropGros> TES BESOINS <wbr /> <Incline><HighlightedText>JOURNALIERS</HighlightedText></Incline></TropGros>
     </>
   ),
   description = "",

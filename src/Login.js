@@ -9,6 +9,15 @@ import logo from "images/logo.PNG";
 import googleIconImageSrc from "images/google-icon.png";
 import twitterIconImageSrc from "images/twitter-icon.png";
 import { ReactComponent as LoginIcon } from "feather-icons/dist/icons/log-in.svg";
+import { useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import { auth } from "./myComponents/firebase-config";
+import {Link} from 'react-router-dom'
 
 const Container = tw(ContainerBase)`min-h-screen bg-primary-900 text-white font-medium flex justify-center -m-8`;
 const Content = tw.div`max-w-screen-xl m-0 sm:mx-20 sm:my-16 bg-white text-gray-900 shadow sm:rounded-lg flex justify-center flex-1`;
@@ -53,6 +62,9 @@ const IllustrationImage = styled.div`
   ${tw`m-12 xl:m-16 w-full max-w-sm bg-contain bg-center bg-no-repeat`}
 `;
 
+
+
+
 export default ({
   logoLinkUrl = "404",
   illustrationImageSrc = illustration,
@@ -74,7 +86,47 @@ export default ({
   forgotPasswordUrl = "404",
   signupUrl = "/signup",
 
-}) => (
+}) => { 
+  
+  
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+  
+
+  const login = async () => {
+    try {
+      console.log("pute");
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+
+     
+    } catch (error) {
+      console.log(error.message);
+    }
+
+    window.location = '/login'
+  };
+
+  const logout = async () => {
+    await signOut(auth);
+  };
+  
+  
+  
+  return (
   <AnimationRevealPage>
     <Container>
       <Content>
@@ -99,12 +151,20 @@ export default ({
                 <DividerText>Or Sign in with your e-mail</DividerText>
               </DividerTextContainer>
               <Form>
-                <Input type="email" placeholder="Email" />
-                <Input type="password" placeholder="Mot de passe" />
-                <SubmitButton type="submit">
+                <Input type="email" placeholder="Email" onChange={(event) => {
+            setLoginEmail(event.target.value);
+          }} />
+                <Input type="password" placeholder="Password" onChange={(event) => {
+            setLoginPassword(event.target.value);
+          }} />
+
+          <Link  onClick={() => login()} to='/'>
+         
+                <SubmitButton type="submit" onClick={() => login()} to='/success'>
                   <SubmitButtonIcon className="icon" />
                   <span className="text">{submitButtonText}</span>
-                </SubmitButton>
+                </SubmitButton> 
+                </Link>
               </Form>
               <p tw="mt-6 text-xs text-gray-600 text-center">
                 <a href={forgotPasswordUrl} tw="border-b border-gray-500 border-dotted">
@@ -127,3 +187,4 @@ export default ({
     </Container>
   </AnimationRevealPage>
 );
+};
