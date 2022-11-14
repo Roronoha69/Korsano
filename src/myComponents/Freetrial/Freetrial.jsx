@@ -11,6 +11,16 @@ import gratuit from '../../images/korsanoblack.png'
 import tw from "twin.macro";
 
 
+
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+//import {getAuth} from "firebase/auth";
+
+import { useAuth0 } from '@auth0/auth0-react';
+
+
+
 {/* <p>{taille}</p>
 <p>{poid}</p>
 <p>{age}</p>
@@ -25,6 +35,47 @@ import tw from "twin.macro";
 
 
 function Freetrial() {
+
+
+  const { user, isLoading } = useAuth0();
+  const [stateEmail, setEmail] = useState('')
+  const [nickname, setNickname] = useState('')
+  const [stringFat, setStringFat] = useState('')
+  const [stringCal, setStringCal] = useState('')
+  
+
+
+  const test = () =>{
+    if (user) {
+ 
+ setNickname(user.nickname)
+ setEmail(user.email)
+ 
+ }
+}
+
+console.log("OOO");
+   console.log(stateEmail);
+   console.log("OOO");
+
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDWBUWEzSwjAmPZwESF12aIXjwEYLDfThA",
+        authDomain: "korsano-3681c.firebaseapp.com",
+        projectId: "korsano-3681c",
+        storageBucket: "korsano-3681c.appspot.com",
+        messagingSenderId: "687740193997",
+        appId: "1:687740193997:web:a3466695cc62f8ec6ded84",
+        measurementId: "G-H4EZDX94ZQ"
+      };
+      
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      //const auth = getAuth(app);
+      
+
+
+
 
   const Incline = styled.div`
   --tw-translate-x: 0;
@@ -70,6 +121,7 @@ function Freetrial() {
   const [,] =useState()
   const [fixGoal, setFixGoal] =useState()
 
+ 
 
   const [,] =useState()
 
@@ -192,7 +244,10 @@ if (x==32){
     if (gender == 'homme'){
       setMb(Math.round((13.707*poid + 4.923*taille - 6.673*age + 77.607)/10)*10)
       setBej(Math.round((nap[actv+work]*(13.707*poid + 4.923*taille - 6.673*age + 77.607))/10)*10)
-    }    
+    }   
+    
+    
+    test()
   }
 
   function handleResult2() {
@@ -211,10 +266,33 @@ if (x==32){
     if (fixGoal==false){
       setFixGoal2(bej+200)
     }
-    
+
+    console.log(bodyfat);
+    let timer = setTimeout(() => 
+      handleSubmit()
+    , 5000); 
   } 
  
-  console.log(bodyfat);
+
+  const handleSubmit = async(e) => {
+    e.preventdefault();
+  
+   console.log('##############');
+   console.log(bodyfat);
+   console.log(stateEmail);
+   console.log('#############');
+    
+    await addDoc(collection(db, `${nickname}`), {
+      bodyfat,
+      fixGaol2,
+      stateEmail,
+      completed: false,
+    })
+  }
+
+
+
+
   return (
     <div className='free'>
       

@@ -11,7 +11,7 @@ import gratuit from '../../images/korsanoblack.png'
 import tw from "twin.macro";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, addDoc, deleteDoc, setDoc   } from "firebase/firestore";
 //import {getAuth} from "firebase/auth";
 
 import { useAuth0 } from '@auth0/auth0-react';
@@ -36,10 +36,9 @@ function Qcm() {
   const { user, isLoading } = useAuth0();
   const [stateEmail, setEmail] = useState('')
   const [nickname, setNickname] = useState('')
-  const [stringFat, setStringFat] = useState('')
-  const [stringCal, setStringCal] = useState('')
-  //const [fat, setFat] = useState('')
-  //const [calories, setCalories] = useState('')
+
+  
+
 
   const test = () =>{
     if (user) {
@@ -65,7 +64,7 @@ function Qcm() {
       const db = getFirestore(app);
       //const auth = getAuth(app);
       
-      const [title, setTitle] = React.useState("Salut")
+
 
     
 
@@ -107,11 +106,11 @@ function Qcm() {
 
   const [mb, setMb] =useState()
   const [bej, setBej] =useState()
-  const [bodyfat, setbodyfat] =useState(13)
-  const [calories, setCalories] =useState(3000)
+  const [bodyfat, setbodyfat] =useState('')
+  const [calories, setCalories] =useState('')
 
   const [fixGoal, setFixGoal] =useState()
-
+  
 
   const [,] =useState()
 
@@ -212,15 +211,14 @@ if (x==32){
       setNumber(n+2)
       if (fixGoal==true){
       setCalories(bej-200)
-      //setStringCal(String(bej-200))
+
       }
   
       if (fixGoal==false){
         setCalories(bej+200)
-        //setStringCal(String(bej+200))
       }
 
-setStringCal(calories.toString() + 'pute')
+
 
     
   }
@@ -238,6 +236,10 @@ setStringCal(calories.toString() + 'pute')
       setMb(Math.round((13.707*poid + 4.923*taille - 6.673*age + 77.607)/10)*10)
       setBej(Math.round((nap[actv+work]*(13.707*poid + 4.923*taille - 6.673*age + 77.607))/10)*10)
     } 
+
+   
+    
+
     
     test()
 
@@ -251,15 +253,27 @@ setStringCal(calories.toString() + 'pute')
     //e.preventdefault();
   
    console.log('##############');
-   console.log(stringCal);
+   console.log(bodyfat);
    console.log('#############');
-    
-    await addDoc(collection(db, `${nickname}`), {
-      stringCal,
+
+   var stringFat = bodyfat.toString()
+   var stringCal = calories.toString()
+   var stringPoid = poid.toString()
+   var stringMaintient = bej.toString()
+  
+    await deleteDoc(doc(db, `${nickname}`, `${stateEmail}`)); 
+
+    await setDoc(doc(db, `${nickname}`, `${stateEmail}`),{ 
+      //addDoc(collection(db, `${nickname}`, `${stateEmail}`), {
       stringFat,
+      stringCal,
       stateEmail,
+      stringPoid,
+      stringMaintient,
       completed: false,
     })
+
+    window.location = '/success'
   }
 
 
@@ -288,15 +302,12 @@ setStringCal(calories.toString() + 'pute')
 
 
     //window.location
-    setStringCal(calories.toString() + 'pute')
-    setStringFat(bodyfat.toString())  
-    
-    
-    handleSubmit()
+  
+
   } 
 
 
- 
+ console.log(calories);
 
 
 
@@ -305,9 +316,6 @@ setStringCal(calories.toString() + 'pute')
   //  console.log(bodyfat);
   // console.log(stateEmail);
   // console.log(fixGaol2);
-
-  console.log(stringCal);
-
 
 
 
@@ -395,6 +403,17 @@ setStringCal(calories.toString() + 'pute')
         <input className={gender=='homme'?'invisible':''} type="number" placeholder='Tour de hanche' onChange={e => setHanche(e.target.value)}/>
       </form>
       <p onClick={()=> handleResult2() }>
+        Suivant
+      </p>
+      </div>
+
+      <div className={`questions ${n==9? '':'invisible'}`}>
+       <h1>Il faut garder cette question pour envoyer les datas</h1>
+
+      <form action="">
+        
+      </form>
+      <p onClick={()=> handleSubmit() }>
         Résultats
       </p>
       </div>

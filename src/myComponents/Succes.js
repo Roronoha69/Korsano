@@ -22,12 +22,115 @@ import chefIconImageSrc from "images/chef-icon.svg";
 import celebrationIconImageSrc from "images/celebration-icon.svg";
 import shopIconImageSrc from "images/shop-icon.svg";
 
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+
+
+
+//import {getAuth} from "firebase/auth";
+
 
 
 
 
 
 export default () => {
+  const { user, isLoading } = useAuth0();
+  const [stateEmail, setEmail] = useState()
+  const [fireData, setFireData] = useState([])
+  const [userEmail, setUserEmail] = useState()
+  const [bug, bugSolved ] = useState(false)
+
+
+
+  
+ const [maintient, setMaintient] = useState('')
+ const [calories, setCalories] = useState('')
+ const [prots, setProts] = useState('')
+ //const [poid, setPoid ] = useState()
+ const [bodyfat, setBodyfat] = useState('')
+ const [nickname, setNickname] = useState('')
+ const [bulk, setBulk] = useState('')
+
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDWBUWEzSwjAmPZwESF12aIXjwEYLDfThA",
+    authDomain: "korsano-3681c.firebaseapp.com",
+    projectId: "korsano-3681c",
+    storageBucket: "korsano-3681c.appspot.com",
+    messagingSenderId: "687740193997",
+    appId: "1:687740193997:web:a3466695cc62f8ec6ded84",
+    measurementId: "G-H4EZDX94ZQ"
+  };
+  
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+
+ 
+
+    // let timeout
+    //     if (!isLoading && user) {
+    // const { email } = user;
+    // setEmail(email)
+    //  console.log(email);
+    //}
+
+    
+    const getData = async () => {
+      
+    const querySnapshot = await getDocs(collection(db, `${user.nickname}`));
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      console.log(doc.id, " => ", doc.data());
+      setCalories(doc.data().stringCal)
+      setBodyfat(doc.data().stringFat)
+      setProts(doc.data().stringPoid * 1.7)
+      setMaintient(doc.data().stringMaintient)
+      setFireData(doc.id, " => ", doc.data())
+      bugSolved(true)
+      if (maintient < calories) {
+        setBulk(true)
+      }
+
+      if (maintient > calories) {
+        setBulk(false)
+      }
+      
+    });
+      
+   
+     }
+    
+        useEffect(() => {
+
+            console.log(user);
+                    
+            if (user && !isLoading) {
+              setUserEmail(user.email)
+                          setNickname(user.nickname)
+                          console.log('here');
+                          console.log(user.email);
+                          console.log(user.nickname);
+                      
+            }
+                        
+                  
+
+
+       
+  
+
+        
+          
+        }, [])
+        
+    
+    
+    
+  
 
 
   const Subheading = tw.span`tracking-wider text-sm font-medium`;
@@ -49,42 +152,24 @@ export default () => {
 
 
   const [backendData, SetData] = useState()
-  const { user, isLoading } = useAuth0();
-  const [stateEmail, setEmail] = useState('mbodje.justin@gmail.com')
   
- const test = () =>{
-     if (!isLoading && user) {
-  const { email } = user;
-  setEmail(email)
-    console.log(email);
-  }
- }
+ 
+  
  
  // Changement post a get a fait bug
  
-   useEffect(()=>{
- //   fetch("/stripe").then(
- //     response => response.json()
- //   ).then(
- //     data => {
- //       SetData(data)
- //     }
- //   )
- 
- let timer1 = setTimeout(() => test(), 2000);
- 
-   })
  
  
-   const fetchData = async() =>{
-       fetch("/user").then(
-     response => response.json()
-   ).then(
-     data => {
-       SetData(data)
-     }
-   )
-   }
+  //  const fetchData = async() =>{
+  //      fetch("/user").then(
+  //    response => response.json()
+  //  ).then(
+  //    data => {
+  //      SetData(data)
+  //    }
+  //  )
+  //  console.log(user.email);
+  //  }
  
  
  const sendBack = async(event) => {
@@ -105,16 +190,113 @@ export default () => {
  }
 
 
+// Breakfast 
+const [breakfastOeufs, setBreakfastOeufs] = useState('3')
+const [breakfastWrap, setBreakfastWraps] = useState('1')
+const [mondayChevre, setMondayChevre] = useState()
 
- const [calories, setCalories] = useState('2830')
- const [prots, setProts] = useState('120')
- const [bodyfat, setBodyfat] = useState('9.78')
+//Meal prep1
+const [mealPrep1Quinoa, setMealPrep1Quinoa] = useState()
+const [mealPrep1Chiken, setMealPrep1Chiken] = useState()
+const [mealPrep1Feta, setMealPrep1Feta] = useState()
+const [mealPrep1Huile, setMealPrep1Huile] = useState()
+const [mealPrep1Avoca, setMealPrep1Avoca] = useState('1/2')
+
+// colation Shakeur
+const [shakeurLait, setShakeurLait] = useState()
+const [shakeurBanane, setShakeurBanane] = useState('1')
+const [shakeurBDC, setShakeurBDC] = useState()
+const [shakeurGlace, setShakeurGlace] = useState()
+const [shakeurChoco, setShakeurChoco] = useState()
+
+//monday Dinner
+const [mondayTofu, setMondayTofu] = useState('')
+const [mondayRiz, setMondayRiz] = useState('')
+const [mondayPoid, setMondayPoid] = useState('')
+
+//Sauce a mettre
+
+
+//Tuesday breakfast
+const [tuesdayBreakfastBDC, setTuesdayBreakfastBDC] = useState('')
+
+
+// Dinner 
+const [tuesdayWrap, setTuesdayWrap] = useState('2')
+const [tuesdaySardine, setTuesdaySardines] = useState('')
+const [tuesdayYaourt, setTuesdayYaourt] = useState('')
+
+
+//Mercredi Dej
+const [wednesdayChevre, setWednesdayChevre] = useState('')
+const [wednesdayPesto, setWednesdayPesto] = useState('')
+
+//Meal prep 2
+const [mealPrep2cashew, setMealPrep2Cashew] = useState('')
+//const [mealPrep2, setMealPrep2] = useState('')
+
+//Mercredi dinner
+const [wednesdayWrap, setWednesdayWrap] = useState('')
+const [wednesdayTofu, setWednesdayTofu] = useState('')
+const [wednesdayHuile, setWednesdayHuile] = useState('') 
+const [wednesdayCreme, setWednesdayCreme] = useState('') 
+
+//Thurday brekfast
+const [thurdayAvoca, setThursdayAvoca] = useState('')
+
+
+//Thursday diner 
+
+// TBD 
+const [thurday, setThursday] = useState('') 
+
+
+
+//Friday  BF 
+//BreakfastOeufs Etc 
+// Monday chevre
+
+// Friday  meal prep
+const [mealPrep3Smoked, setMealPrep3Smoked] = useState('') 
+const [mealPrep3, setMealPrep3] = useState('') 
+
+
+//friday 
+
+// TBD
+const [friday, setFriday] = useState('') 
+
+
+// WEEK END TBD
+
+
+// Saturday déjeuner 
+
+
+
+//Saturday 
+
+
+
+
+
 
 
 
   return (
-    <AnimationRevealPage>
 
+
+    <div> 
+
+      <div  className={bug? 'invisible' : '' }>
+        Your private information will not 
+        <button onClick={()=> getData()} >
+          Acces data
+        </button>
+      </div>
+      <div className={bug? '' : 'invisible' }>
+    <AnimationRevealPage>
+       
 <div className={calories? '' : 'invisible'}>
       <Hero
         heading={<>Your <Incline><HighlightedText>Results</HighlightedText></Incline></>}
@@ -154,7 +336,7 @@ export default () => {
           },
           {
             imageSrc: chefIconImageSrc,
-            title: `${prots}g`,
+            title: `${Math.round(prots)}g`,
             description: "Vos besoin quotidient en proteines",
             url: "https://timerse.com"
           },
@@ -166,14 +348,14 @@ export default () => {
           },
           {
             imageSrc: shopIconImageSrc,
-            title: "230+ Locations",
-            description: "Lorem ipsum donor amet siti ceali placeholder text",
+            title: "3000",
+            description: "Tes besoin en calories pour prisse de masse",
             url: "https://google.com"
           },
           {
             imageSrc: chefIconImageSrc,
-            title: "Professional Chefs",
-            description: "Lorem ipsum donor amet siti ceali placeholder text",
+            title: "6 semaine",
+            description: "Le temps qu'il faut pour prendre 2kg de muscle sec",
             url: "https://timerse.com"
           },
          
@@ -195,7 +377,7 @@ export default () => {
         imageSrc:
           "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
         title: "Veg Mixer",
-        content: "500g Test ",
+        content: ``,
         content2: "500g Test ",
         content3: "500g Test ",
         content4: "500g Test ",
@@ -666,6 +848,8 @@ export default () => {
        </div>
       <Footer />
     </AnimationRevealPage>
+    </div>
+    </div>
   );
 }
 
