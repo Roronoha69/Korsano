@@ -15,6 +15,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 const Header = tw.header`
   flex justify-between items-center
   max-w-screen-xl mx-auto
+ 
+  
 `;
 
 export const NavLinks = tw.div`inline-block`;
