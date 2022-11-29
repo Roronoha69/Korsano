@@ -33,9 +33,16 @@ import { useAuth0 } from '@auth0/auth0-react';
 function Qcm() {
 
 
+  
   const { user, isLoading } = useAuth0();
   const [stateEmail, setEmail] = useState('')
   const [nickname, setNickname] = useState('')
+  const [stringFat, setStringFat] = useState('')
+  const [stringCal, setStringCal] = useState('')
+  const [objectifKilos, setObjectifKilos] = useState()
+  const [objectifTemps, setObjectifTemps] = useState()
+  const [objectifVitesse, setObjectifVitesse] = useState()
+  const [firstName, setFirstName] = useState('')
 
   
 
@@ -208,15 +215,7 @@ if (x==32){
   function hundleresult3() {
     
    
-      setNumber(n+2)
-      if (fixGoal==true){
-      setCalories(bej-200)
-
-      }
-  
-      if (fixGoal==false){
-        setCalories(bej+200)
-      }
+      
 
 
 
@@ -246,20 +245,28 @@ if (x==32){
 
   }
 
+  function temps(params) {
+    setNumber(n+1)
+    setObjectifTemps(Math.round(objectifKilos/params))
+    setObjectifVitesse(params*100)
+  }
+
 
 
 
   const handleSubmit = async(e) => {
     //e.preventdefault();
   
-   console.log('##############');
-   console.log(bodyfat);
-   console.log('#############');
+    console.log('##############');
+    console.log(bodyfat);
+    console.log('#############');
 
-   var stringFat = bodyfat.toString()
-   var stringCal = calories.toString()
-   var stringPoid = poid.toString()
-   var stringMaintient = bej.toString()
+    var stringFat = bodyfat.toString()
+    var stringCal = calories.toString()
+    var stringPoid = poid.toString()
+    var stringMaintient = bej.toString()
+    var stringTime = objectifTemps.toString()
+    var stringVitesse = objectifVitesse.toString()
   
     await deleteDoc(doc(db, `${nickname}`, `${stateEmail}`)); 
 
@@ -269,7 +276,10 @@ if (x==32){
       stringCal,
       stateEmail,
       stringPoid,
-      stringMaintient,
+      stringTime,
+      stringVitesse,
+      firstName,
+      
       completed: false,
     })
 
@@ -289,15 +299,7 @@ if (x==32){
     //setStringFat(String(Math.round(((495/((1.0324 - 0.19077*Math.log10(tdt-tdc) ) + 0.15456*Math.log10(taille)))-450)*100)/100))
     }
 
-    if (fixGoal==true){
-      setCalories(bej-200)
-      //setStringCal(String(bej-200))
-    }
-
-    if (fixGoal==false){
-      setCalories(bej+200)
-      //setStringCal(String(bej+200))
-    }
+  
   
 
 
@@ -337,38 +339,56 @@ if (x==32){
 
       
       
+    
+
       <div className={`questions ${n==1? '':'invisible'}`}>
-      <h1>Tes objectifs ?</h1>
-      {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> */}
-      <button onClick={()=> hundleQuizz(2)}>Prise de muscle clean.</button>
-      
-      <button onClick={()=> hundleQuizz(3)}>Prisse de muscle et faire descendre mon taux de graisse</button>
-      </div>
-
-      
-
-      <div className={`questions ${n==2? '':'invisible'}`}>
-        <h1>Quel est ton budjet courses ?</h1>
-      <button onClick={()=> hundleQuizz(31)}>Dépenser le moins possible.</button>
-      <button onClick={()=> hundleQuizz(32)}>Budget normal mais optimisé.</button>
-      </div>
-
-      <div className={`questions ${n==3? '':'invisible'}`}>
         <h1>Tu es ?</h1>
       <button onClick={()=> hundleQuizz(19)}>Un homme</button>
       <button onClick={()=> hundleQuizz(20)}>Une femme</button>
       </div>
 
+      
+      <div className={`questions ${n==2? '':'invisible'}`}>
+      <h1>Combien de kilos veux-tu prendre ?</h1>
+      {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> 
+       
+      */}
+      <form action="">
+        <input type="number" placeholder='Kg' max="10" min="1"onChange={e => setObjectifKilos(e.target.value)}/>
+    
+        </form>
+          <p onClick={() => setNumber(n+1)}>
+              Suivant
+          </p>
+      </div>
 
+
+      
+      <div className={`questions ${n==3? '':'invisible'}`}>
+      <h1>As quel vitesse tu veux faire ta prisse de masse ? (modifiable) </h1>
+      <button onClick={()=> temps(0.3)}>+300 cal/j</button>
+      <button onClick={()=> temps(0.4)}>+400 cal/j</button>
+      <button onClick={()=> temps(0.5)}>+500 cal/j</button>
+      </div>
+      
       <div className={`questions ${n==4? '':'invisible'}`}>
-       <h1>Quel est ton niveau d'activité physique ?</h1>
+      <h1>What is your first name? </h1>
+      {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> */}
+     <input type="text" onChange={e => setFirstName(e.target.value)}/>
+
+      
+      {/* <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button> */}
+      </div>
+
+      <div className={`questions ${n==5? '':'invisible'}`}>
+        <h1>Quel est ton niveau d'activité physique ?</h1>
       <button onClick={()=> hundleQuizz(15)}>Le néant</button>
       <button onClick={()=> hundleQuizz(16)}>1 à 3 fois par semaine</button>
       <button onClick={()=> hundleQuizz(17)}>3 à 5 fois par semaine</button>
       <button onClick={()=> hundleQuizz(18)}>6+ par semaine</button>
       </div>
 
-      <div className={`questions ${n==5? '':'invisible'}`}>
+      <div className={`questions ${n==6? '':'invisible'}`}>
       <h1>Ton travail est plutot :</h1>
       <button onClick={()=> hundleQuizz(11)}>Physiquement calme</button>
       <button onClick={()=> hundleQuizz(12)}>Un peu actif</button>
@@ -376,9 +396,9 @@ if (x==32){
       <button onClick={()=> hundleQuizz(14)}>Physique ou port de charges</button>
       </div>
 
-      <div className={`questions ${n==6? '':'invisible'}`}>
-     
-       <h1>On vas calculer tes besoins en calories :</h1>
+      <div className={`questions ${n==7? '':'invisible'}`}>
+      
+        <h1>On vas calculer tes besoins en calories :</h1>
             <form action="">
               <input type="number" placeholder='Taille (cm)' onChange={e => setTaille(e.target.value)}/>
               <input type="number" placeholder='Poid (kg)' onChange={e => setPoid(e.target.value)}/>
@@ -389,14 +409,9 @@ if (x==32){
             </p>
       </div>
 
-      <div className={`questions ${n==7? '':'invisible'}`}>
-       <h1>Veux tu que l'on calcul ton % de graisse ?</h1>
-      <button onClick={()=> setNumber(n+1)}>Oui</button>
-      <button onClick={()=> hundleresult3()}>Non</button>   
-      </div>
-
+    
       <div className={`questions ${n==8? '':'invisible'}`}>
-       <h1>Calcul du % de graisse selon la méthode de l'US NAVY.</h1>
+        <h1>Calcul du % de graisse selon la méthode de l'US NAVY.</h1>
       <form action="">
         <input type="number" placeholder='Tour de taille (nombril)' onChange={e => setTdt(e.target.value)}/>
         <input type="number" placeholder='Tour de cou (depuis la base)' onChange={e => setTdc(e.target.value)}/>
@@ -408,7 +423,7 @@ if (x==32){
       </div>
 
       <div className={`questions ${n==9? '':'invisible'}`}>
-       <h1>Il faut garder cette question pour envoyer les datas</h1>
+        <h1>Il faut garder cette question pour envoyer les datas</h1>
 
       <form action="">
         
@@ -422,15 +437,14 @@ if (x==32){
 </div>
 
 
- 
 
   </div>
 
 
-   </div>
-   <div className="footer-fix">
-    <Footer /> 
-     </div>
+    </div>
+      <div className="footer-fix">
+      <Footer /> 
+    </div>
 </div>
   )
 

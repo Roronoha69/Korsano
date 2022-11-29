@@ -14,13 +14,18 @@ import TabGrid from "components/cards/TabCardGrid.js";
 import Features from "components/features/ThreeColSimple.js";
 import shopIconImageSrc from "images/shop-icon.svg";
 import chefIconImageSrc from "images/chef-icon.svg";
-import celebrationIconImageSrc from "images/celebration-icon.svg";
+
+import ImageProtein from "images/icons8-heart-with-pulse-64.png";
+import ImageMuscle from "images/icons8-account-64.png";
+import ImageCal from "images/icons8-fire-64.png";
+import ImageTime from "images/icons8-calendar-642.png";
+import ImageScan from "images/icons8-steak-64.png";
 
 
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 //import {getAuth} from "firebase/auth";
 
 import { useAuth0 } from '@auth0/auth0-react';
@@ -54,7 +59,7 @@ function Freetrial() {
   const [firstName, setFirstName] = useState('')
 
 
-  const [calories, setCalories] = useState(2880)
+  const [calories, setCalories] = useState()
   const [prots, setProts] = useState(120)
 
 
@@ -129,6 +134,11 @@ function Freetrial() {
   const [eggs,setEgges] =useState(3)
   const [goat, setGoat] = useState(30)
 
+
+
+
+
+
 //Lunch
 const [olive, setOlive] = useState()
 const [ tortilla, setTortilla ] = useState()
@@ -154,6 +164,14 @@ const [beans, setBeans] = useState()
 const [ , set ] = useState()
 
 
+
+function TrialProgram (paramsCal) {
+    
+  if (paramsCal > 2400 && paramsCal <= 2500) {
+
+    }
+
+}
 
 
   const Exnap = [0, 0, 1.375, 1.4675, 1.56, 1.6, 1.64, 1.73, 1.82]
@@ -242,7 +260,7 @@ const [ , set ] = useState()
     
     setProts(poid*1.7)
     
-    test()
+
   }
 
   function handleResult2() {
@@ -254,40 +272,38 @@ const [ , set ] = useState()
     setbodyfat(Math.round(((495/((1.0324 - 0.19077*Math.log10(tdt-tdc) ) + 0.15456*Math.log10(taille)))-450)*100)/100)
     }
 
-    if (fixGoal==true){
-      setCalories(bej-200)
-    }
-
-    if (fixGoal==false){
-      setCalories(bej+200)
-    }
-
+    setCalories(bej+objectifVitesse)
+    
 
       handleSubmit()
 
   } 
 
 
+
   function temps(params) {
     setNumber(n+1)
     setObjectifTemps(Math.round(objectifKilos/params))
     console.log(params);
+    setObjectifVitesse(params*1000)
+    
   }
 
   const handleSubmit = async(e) => {
     //e.preventdefault();
   
 
+    console.log('########');
+    console.log(stateEmail);
+    console.log('########');
     
-    await addDoc(collection(db, `${nickname}`), {
-      bodyfat,
-      fixGaol2,
+    await addDoc(collection(db, `emails`, 'bddEmailEng', 'BddEmailEnglish'), {
       stateEmail,
-      completed: false,
+      firstName
     })
   }
 
-console.log(n);
+console.log(calories);
 
 
   return (
@@ -298,13 +314,13 @@ console.log(n);
 </HeaderStyle>
 
 <div>
-  {/* <div className={`test ${n < 9? '':'invisible'}`}> */}
-  <div className={`test ${n < 0? '':'invisible'}`}>
+  {/* <div className={`test ${n < 10? '':'invisible'}`}> */}
+  <div className={`test ${n < 10? '':'invisible'}`}>
 
 
     <div className={`quiz ${quizStart? '':'invisible'}`}>
 
-     <div className={`questions ${n==0? '':'invisible'}`}>
+     <div className={`questions ${n==1? '':'invisible'}`}>
         <h1>Tu es ?</h1>
       <button onClick={()=> hundleQuizz(19)}>Un homme</button>
       <button onClick={()=> hundleQuizz(20)}>Une femme</button>
@@ -313,12 +329,12 @@ console.log(n);
       <div className={`questions ${n==2? '':'invisible'}`}>
       <h1>Combien de kilos veux-tu prendre ?</h1>
       {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> 
-       
+        
       */}
       <form action="">
  <input type="number" placeholder='Kg' max="8" min="1"onChange={e => setObjectifKilos(e.target.value)}/>
     
-       </form>
+        </form>
           <p onClick={() => setNumber(n+1)}>
               Suivant
             </p>
@@ -328,8 +344,9 @@ console.log(n);
 
       <div className={`questions ${n==3? '':'invisible'}`}>
       <h1>As quel vitesse tu veux faire ta prisse de masse ? (modifiable) </h1>
-      <button onClick={()=> temps(0.3)}>0.3 kg/semaines</button>
-      <button onClick={()=> temps(0.2)}>0.2 kg/semaines ( the max for lean groth )</button>
+      <button onClick={()=> temps(0.3)}>+300 cal/j</button>
+      <button onClick={()=> temps(0.4)}>+400 cal/j</button>
+      <button onClick={()=> temps(0.5)}>+500 cal/j</button>
 
       
       </div>
@@ -337,28 +354,21 @@ console.log(n);
       <div className={`questions ${n==4? '':'invisible'}`}>
       <h1>What is your first name? </h1>
       {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> */}
-     <input type="text" onChange={e => setTaille(e.target.value)}/>
-
+      <input type="text" placeholder='Jojo' onChange={e => setFirstName(e.target.value)}/>
+      <p onClick={() => setNumber(n+1)}>
+              Suivant
+            </p>
+      
       
       {/* <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button> */}
       </div>
       
 
-
-      <div className={`questions ${n==3? '':'invisible'}`}>
-      <h1>As quel vitesse tu veux faire ta prisse de masse ? (modifiable) </h1>
-      {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> */}
-      <button onClick={()=> temps(0.3)}>0.3 kg/semaines</button>
-      <button onClick={()=> temps(0.2)}>0.2 kg/semaines ( the max for lean groth )</button>
-
-      
-      {/* <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button> */}
-      </div>
 
     
 
 
-      <div className={`questions ${n==4? '':'invisible'}`}>
+      <div className={`questions ${n==5? '':'invisible'}`}>
         <h1>Quel est ton niveau d'activité physique ?</h1>
       <button onClick={()=> hundleQuizz(15)}>Le néant</button>
       <button onClick={()=> hundleQuizz(16)}>1 à 3 fois par semaine</button>
@@ -366,7 +376,7 @@ console.log(n);
       <button onClick={()=> hundleQuizz(18)}>6+ par semaine</button>
       </div>
 
-      <div className={`questions ${n==5? '':'invisible'}`}>
+      <div className={`questions ${n==6? '':'invisible'}`}>
       <h1>Ton travail est plutot :</h1>
       <button onClick={()=> hundleQuizz(11)}>Physiquement calme</button>
       <button onClick={()=> hundleQuizz(12)}>Un peu actif</button>
@@ -374,7 +384,7 @@ console.log(n);
       <button onClick={()=> hundleQuizz(14)}>Physique ou port de charges</button>
       </div>
 
-      <div className={`questions ${n==6? '':'invisible'}`}>
+      <div className={`questions ${n==7? '':'invisible'}`}>
         <h1>On vas calculer tes besoins en calories :</h1>
             <form action="">
               <input type="number" placeholder='Taille (cm)' onChange={e => setTaille(e.target.value)}/>
@@ -386,7 +396,7 @@ console.log(n);
             </p>
       </div>
 
-      <div className={`questions ${n==7? '':'invisible'}`}>
+      <div className={`questions ${n==8? '':'invisible'}`}>
       <h1>Enter your email</h1>
       <input type="text" placeholder='exemple@gmail.com' onChange={e => setEmail(e.target.value)}/>
       <p onClick={()=> setNumber(n+1) }>
@@ -395,11 +405,7 @@ console.log(n);
 
       </div>
 
-      <div className={`questions ${n==8? '':'invisible'}`}>
-        <h1>Veux tu que l'on calcul l'estimation de ton % de graisse ?</h1>
-      <button onClick={()=> setNumber(n+1)}>Oui</button>
-      <button onClick={()=> hundleresult3()}>Non</button>   
-      </div>
+      
 
       <div className={`questions ${n==9? '':'invisible'}`}>
         <h1>Calcul du % de graisse selon la méthode de l'US NAVY.</h1>
@@ -437,32 +443,32 @@ console.log(n);
         }
         cards={[
           {
-            imageSrc: shopIconImageSrc,
+            imageSrc: ImageCal,
             title: `${bej} calories `,
             description: "Vos besoins caloriques quotidient",
             url: "https://google.com"
           },
           {
-            imageSrc: chefIconImageSrc,
+            imageSrc: ImageScan,
             //title: `${Math.round(prots)}g`,
             title: `entre ${Math.round(poid)*1.5}g et ${Math.round(poid)*2}g`,
             description: "Vos besoin quotidient en proteines ( entre 1.5 et 2 x le poid de corps ) ",
             url: "https://timerse.com"
           },
           {
-            imageSrc: celebrationIconImageSrc,
+            imageSrc: ImageProtein,
             title: `${bodyfat}%`,
             description: "Notre estimation de votre bodyfat (formule US navy)",
             url: "https://reddit.com"
           },
           {
-            imageSrc: shopIconImageSrc,
-            title: bej+220,
+            imageSrc: ImageMuscle,
+            title: calories,
             description: "Tes besoin en calories pour prisse de masse",
             url: "https://google.com"
           },
           {
-            imageSrc: chefIconImageSrc,
+            imageSrc: ImageTime,
             title: `${objectifTemps} semaines`,
             description: `Le temps qu'il faut pour prendre ${objectifKilos}kg de muscle sec`,
             url: "https://timerse.com"
@@ -475,7 +481,7 @@ console.log(n);
       <TabGrid
         heading={
           <>
-            Checkout our <HighlightedText>menu.</HighlightedText>
+            Bulking at <Incline></Incline><HighlightedText>{calories} calories.</HighlightedText><Incline/>
           </>
         }
 
@@ -557,67 +563,16 @@ console.log(n);
       {
         imageSrc:
           "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Veg Mixer",
-        content: "500g Test ",
-        content2: "500g Test ",
-        content3: "500g Test ",
-        content4: "500g Test ",
-        content5: "500g Test ",
+        title: "La video",
+        content: "La description",
+        
 
         price: "710 cal",
         price2: "87g protein",
         rating: "Breakfast",
         reviews: "Breakfast",
         url: "https://www.youtube.com/embed/_GuOjXYl5ew"
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Veg Mixer",
-        content: "500g Test ",
-        content2: "500g Test ",
-        content3: "500g Test ",
-        content4: "500g Test ",
-        content5: "500g Test ",
-
-        price: "710 cal",
-        price2: "87g protein",
-        rating: "Breakfast",
-        reviews: "Breakfast",
-        url: "https://www.youtube.com/embed/_GuOjXYl5ew"
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Veg Mixer",
-        content: "500g Test ",
-        content2: "500g Test ",
-        content3: "500g Test ",
-        content4: "500g Test ",
-        content5: "500g Test ",
-
-        price: "710 cal",
-        price2: "87g protein",
-        rating: "Breakfast",
-        reviews: "Breakfast",
-        url: "https://www.youtube.com/embed/_GuOjXYl5ew"
-      },
-      {
-        imageSrc:
-          "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80",
-        title: "Veg Mixer",
-        content: "500g Test ",
-        content2: "500g Test ",
-        content3: "500g Test ",
-        content4: "500g Test ",
-        content5: "500g Test ",
-
-        price: "710 cal",
-        price2: "87g protein",
-        rating: "Breakfast",
-        reviews: "Breakfast",
-        url: "https://www.youtube.com/embed/_GuOjXYl5ew"
-      },
+      }
       
     ],
     
