@@ -1,5 +1,15 @@
 .free{
 
+.back-btn{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    img{
+        cursor: pointer;
+        width: 1.8rem;
+    }
+    
+}
+
 
 
 .invisible{
@@ -32,11 +42,11 @@
         display: grid;
         place-content: center;
     }
- 
+
 
 .text{
- 
- color: white;
+
+color: white;
     background-color: black;
 
     @media screen and (min-width: 1020px) {
@@ -44,7 +54,7 @@
     width:920px;
     border-radius: 30px;
     box-shadow: 0px 0px 15px 1px rgb(54, 43, 43);
-      }
+    }
 
 
     img{
@@ -59,22 +69,22 @@
         }
 
         @media screen and (min-width: 1020px) {
-       position: absolute;
+        position: absolute;
         width: 400px;
         }
         
         margin-left: 20px;
         margin-top: 15px;
 
-       
+
     }
 
     .text-card{
         background-color: white;
         @media screen and (min-width: 1020px) {
-       position: absolute;
-       
-       width: 410px;
+        position: absolute;
+
+        width: 410px;
         height: 380px;
         margin-top: 20px;
         margin-left: 490px;
@@ -82,11 +92,10 @@
         border-radius: 30px;
         color: black;
         @media screen and (max-width: 1020px) {
-         width: 80%;
-         margin-left: 10%;
-         margin-bottom: 40px;
-        }
-      
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 40px;
+        } 
         .text-card-wrapper{
             margin-top: 25px;
             margin-left: 20px;
@@ -101,20 +110,20 @@
         }
         p{
             font-size: 0.75rem;
-           
+
             margin-top: 20px;
         }
 
         a{
             @media screen and (min-width: 1020px) {
-                  position: absolute;
-                 }
-                 @media screen and (max-width: 1020px) {
+                    position: absolute;
+                }
+                @media screen and (max-width: 1020px) {
                     margin-bottom: 20px;
                     width: 100%;
                     margin-top: 15px;
-                   }
-          
+                }
+
             bottom: 20px;
             width: 80%;
             left: 10%;
@@ -129,7 +138,7 @@
             background-color: #ff1515ca;
             color: #ffffff;
             box-shadow: 0px 3px 50px 4px rgba(0, 0, 0, 0.677);
-           
+
         }
         
     }
@@ -168,12 +177,53 @@
             }
 
             @media screen and (max-width: 1010px) {
-                  display: flex;
-                  width: 80vw;           
-                  padding: 1.5rem;
-              }
+                display: flex;
+                width: 80vw;           
+                padding: 1.5rem;
+            }
         }
+            
+        
+        .black-btn{
+            p{
+                //padding: 3rem 1rem;
+                box-shadow: 0px 3px 50px 4px rgba(0, 0, 0, 0.309);
+                background-color: #232323cc;
+                border-radius: 25px;
+                margin: 0 20px 0 0;
+                color: white;
+                font-weight: 600;
+                font-size: 0.9rem;
+                margin-top: 20px;
+                justify-content: flex-start;
+                padding: 1.5rem;
+                @media screen and (min-width: 1020px) {
+                
+                width: 100%;
+                //align-items: center;
+    
+    
+    
+                }
+    
+    
+    
+                @media screen and (max-width: 1010px) {
+                    display: flex;
+                    width: 80vw;           
+                    
+                }
+            }
+    
+            p:hover{
+                box-shadow: 0px 3px 50px 4px rgba(0, 0, 0, 0.642);
+                cursor: pointer;
+                //background-color: #ff151595;
+            }
+    
+                    }
 
+                        
         p{
             //padding: 3rem 1rem;
             box-shadow: 0px 3px 50px 4px rgba(0, 0, 0, 0.309);
@@ -190,13 +240,18 @@
             
             width: 100%;
             //align-items: center;
+
+
+
             }
 
+
+
             @media screen and (max-width: 1010px) {
-                  display: flex;
-                  width: 80vw;           
-                  
-              }
+                display: flex;
+                width: 80vw;           
+                
+            }
         }
 
         p:hover{
@@ -217,7 +272,7 @@
             margin-top: 20px;
             justify-content: flex-start;
             padding: 1.5rem;
-                       @media screen and (max-width: 1020px) {
+                        @media screen and (max-width: 1020px) {
                         display: flex;
                         width: 80vw;           
                         
@@ -236,8 +291,8 @@
 
 
 .result{
- font-weight: bold;
- .lock{
+    font-weight: bold;
+    .lock{
     margin-top: 50px;
     margin-bottom: 50px;
     border-radius: 30px;

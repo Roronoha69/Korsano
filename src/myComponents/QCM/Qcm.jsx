@@ -16,6 +16,7 @@ import { collection, doc, addDoc, deleteDoc, setDoc   } from "firebase/firestore
 
 import { useAuth0 } from '@auth0/auth0-react';
 
+import Back from "images/icons8-undo-64.png";
 
 {/* <p>{taille}</p>
 <p>{poid}</p>
@@ -49,11 +50,11 @@ function Qcm() {
 
   const test = () =>{
     if (user) {
- 
- setNickname(user.nickname)
- setEmail(user.email)
-   console.log(stateEmail);
- }
+
+  setNickname(user.nickname)
+  setEmail(user.email)
+  console.log(stateEmail);
+  }
 }
 
 
@@ -141,7 +142,7 @@ function Qcm() {
     setGoal("prise de masse")
     setFixGoal(false)
   }
- 
+  
   if(x == 3){
     setGoal("sèche")
     setFixGoal(true)
@@ -212,15 +213,6 @@ if (x==32){
   }
 
 
-  function hundleresult3() {
-    
-   
-      
-
-
-
-    
-  }
 
 
   function handleResult() {
@@ -236,9 +228,9 @@ if (x==32){
       setBej(Math.round((nap[actv+work]*(13.707*poid + 4.923*taille - 6.673*age + 77.607))/10)*10)
     } 
 
-   
-    
 
+    
+    
     
     test()
 
@@ -248,7 +240,8 @@ if (x==32){
   function temps(params) {
     setNumber(n+1)
     setObjectifTemps(Math.round(objectifKilos/params))
-    setObjectifVitesse(params*100)
+    setObjectifVitesse(params*1000)
+    
   }
 
 
@@ -257,14 +250,14 @@ if (x==32){
   const handleSubmit = async(e) => {
     //e.preventdefault();
   
-    console.log('##############');
+
     console.log(bodyfat);
-    console.log('#############');
+
 
     var stringFat = bodyfat.toString()
-    var stringCal = calories.toString()
+    var stringBej = bej.toString()
     var stringPoid = poid.toString()
-    var stringMaintient = bej.toString()
+    var stringCal = calories.toString()
     var stringTime = objectifTemps.toString()
     var stringVitesse = objectifVitesse.toString()
   
@@ -274,6 +267,7 @@ if (x==32){
       //addDoc(collection(db, `${nickname}`, `${stateEmail}`), {
       stringFat,
       stringCal,
+      stringBej,
       stateEmail,
       stringPoid,
       stringTime,
@@ -300,7 +294,7 @@ if (x==32){
     }
 
   
-  
+    setCalories(bej+objectifVitesse)
 
 
     //window.location
@@ -309,7 +303,7 @@ if (x==32){
   } 
 
 
- console.log(calories);
+console.log(calories);
 
 
 
@@ -331,84 +325,99 @@ if (x==32){
    <Header />
 </HeaderStyle>
 
-<div className={`change-back ${n==1}`}>
-   <div className="test">
 
+
+<div>
+
+    <div className="test">
+    <div className={`back-btn ${n == 1? 'invisible':''}`} onClick={()=> setNumber(n-1)}>
+  <img src={Back} alt="" />
+  </div>
 
     <div className={`quiz ${quizStart? '':'invisible'}`}>
 
       
       
     
-
-      <div className={`questions ${n==1? '':'invisible'}`}>
-        <h1>Tu es ?</h1>
-      <button onClick={()=> hundleQuizz(19)}>Un homme</button>
-      <button onClick={()=> hundleQuizz(20)}>Une femme</button>
+    <div className={`questions ${n==1? '':'invisible'}`}>
+        <h1>Are you?</h1>
+      <button onClick={()=> hundleQuizz(19)}>Men</button>
+      <button onClick={()=> hundleQuizz(20)}>Women</button>
       </div>
 
       
       <div className={`questions ${n==2? '':'invisible'}`}>
-      <h1>Combien de kilos veux-tu prendre ?</h1>
+      <h1>How far do you you want to bulk? ( in kg )</h1>
       {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> 
-       
+        
       */}
       <form action="">
-        <input type="number" placeholder='Kg' max="10" min="1"onChange={e => setObjectifKilos(e.target.value)}/>
+  <input type="number" placeholder='Kg' max="10" min="1"onChange={e => setObjectifKilos(e.target.value)}/>
     
         </form>
           <p onClick={() => setNumber(n+1)}>
-              Suivant
-          </p>
+              Next
+            </p>
+      
+      {/* <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button> */}
       </div>
+
 
 
       
       <div className={`questions ${n==3? '':'invisible'}`}>
-      <h1>As quel vitesse tu veux faire ta prisse de masse ? (modifiable) </h1>
-      <button onClick={()=> temps(0.3)}>+300 cal/j</button>
-      <button onClick={()=> temps(0.4)}>+400 cal/j</button>
-      <button onClick={()=> temps(0.5)}>+500 cal/j</button>
+      <h1>How fast do you want to go? </h1>
+      <button onClick={()=> temps(0.3)}>+300 cal/day</button>
+      <button onClick={()=> temps(0.4)}>+400 cal/day</button>
+      <button onClick={()=> temps(0.5)}>+500 cal/day</button>
+
+      
       </div>
       
       <div className={`questions ${n==4? '':'invisible'}`}>
       <h1>What is your first name? </h1>
       {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> */}
-     <input type="text" onChange={e => setFirstName(e.target.value)}/>
-
+      <input type="text" placeholder='Jojo' onChange={e => setFirstName(e.target.value)}/>
+      <p onClick={() => setNumber(n+1)}>
+              Next
+            </p>
+      
       
       {/* <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button> */}
       </div>
 
+      
       <div className={`questions ${n==5? '':'invisible'}`}>
-        <h1>Quel est ton niveau d'activité physique ?</h1>
-      <button onClick={()=> hundleQuizz(15)}>Le néant</button>
-      <button onClick={()=> hundleQuizz(16)}>1 à 3 fois par semaine</button>
-      <button onClick={()=> hundleQuizz(17)}>3 à 5 fois par semaine</button>
-      <button onClick={()=> hundleQuizz(18)}>6+ par semaine</button>
+        <h1>How much do you train per week ?</h1>
+      <button onClick={()=> hundleQuizz(15)}>1</button>
+      <button onClick={()=> hundleQuizz(16)}>2 to 3</button>
+      <button onClick={()=> hundleQuizz(17)}>4 to 5</button>
+      <button onClick={()=> hundleQuizz(18)}>6 & more</button>
       </div>
 
       <div className={`questions ${n==6? '':'invisible'}`}>
-      <h1>Ton travail est plutot :</h1>
-      <button onClick={()=> hundleQuizz(11)}>Physiquement calme</button>
-      <button onClick={()=> hundleQuizz(12)}>Un peu actif</button>
-      <button onClick={()=> hundleQuizz(13)}>Actif, je marche beaucoup</button>
-      <button onClick={()=> hundleQuizz(14)}>Physique ou port de charges</button>
+      <h1>How intense is your work?</h1>
+      <button onClick={()=> hundleQuizz(11)}>Sitting most of the time</button>
+      <button onClick={()=> hundleQuizz(12)}>Slightly active</button>
+      <button onClick={()=> hundleQuizz(13)}>Lot of walking ( 12k step & more )</button>
+      <button onClick={()=> hundleQuizz(14)}>Heavy liftings or intense works</button>
       </div>
 
-      <div className={`questions ${n==7? '':'invisible'}`}>
       
-        <h1>On vas calculer tes besoins en calories :</h1>
+
+      <div className={`questions ${n==7? '':'invisible'}`}>
+        <h1>Let's calcul your calories needs</h1>
             <form action="">
-              <input type="number" placeholder='Taille (cm)' onChange={e => setTaille(e.target.value)}/>
-              <input type="number" placeholder='Poid (kg)' onChange={e => setPoid(e.target.value)}/>
-              <input type="number" placeholder='Age (années)' onChange={e => setAge(e.target.value)}/>
+              <input type="number" placeholder='Height (cm)' onChange={e => setTaille(e.target.value)}/>
+              <input type="number" placeholder='Weight (kg)' onChange={e => setPoid(e.target.value)}/>
+              <input type="number" placeholder='Age (year)' onChange={e => setAge(e.target.value)}/>
             </form>
             <p onClick={()=> handleResult() }>
-              Suivant
+              Next
             </p>
       </div>
 
+      
     
       <div className={`questions ${n==8? '':'invisible'}`}>
         <h1>Calcul du % de graisse selon la méthode de l'US NAVY.</h1>
@@ -423,13 +432,13 @@ if (x==32){
       </div>
 
       <div className={`questions ${n==9? '':'invisible'}`}>
-        <h1>Il faut garder cette question pour envoyer les datas</h1>
+        <h1>All yours informations are only used to build your program and won't be shared</h1>
 
       <form action="">
         
       </form>
       <p onClick={()=> handleSubmit() }>
-        Résultats
+        Continue
       </p>
       </div>
 

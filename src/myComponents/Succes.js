@@ -93,7 +93,9 @@ export default () => {
       setCalories(doc.data().stringCal)
       setBodyfat(doc.data().stringFat)
       setProts(doc.data().stringPoid * 1.7)
-      setMaintient(doc.data().stringMaintient)
+      setMaintient(doc.data().stringBej)
+      setObjectifTemps(doc.data().stringTime)
+      setObjectifVitesse(doc.data().stringVitesse)
       setFireData(doc.id, " => ", doc.data())
       bugSolved(true)
       personalizedProgram(doc.data().stringCal)
@@ -2154,39 +2156,39 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
         <Features
         heading={
           <>
-            Analyse <HighlightedText>Macronutriments.</HighlightedText>
+            Your Personalized <HighlightedText>Scan Result</HighlightedText>
           </>
         }
         cards={[
           {
             imageSrc: ImageCal,
-            title: `${calories} calories `,
-            description: "Vos besoins caloriques quotidient",
-            url: "https://google.com"
+            title: `${maintient} calories `,
+            description: "Your daily caloric needs",            
+            url: ""
           },
           {
             imageSrc: ImageScan,
             title: `${Math.round(prots)}g`,
-            description: "Vos besoin quotidient en proteines",
-            url: "https://timerse.com"
+            description: "Your daily protein needs. Between 1.5 et 2 times your weight (kg)",
+            url: ""
           },
           {
             imageSrc: ImageProtein,
             title: `${bodyfat}%`,
-            description: "Notre estimation de votre bodyfat (formule US navy)",
-            url: "https://reddit.com"
+            description: "Your bodyfat estimation (US navy formula)",
+            url: ""
           },
           {
             imageSrc: ImageMuscle,
-            title: "3000",
-            description: "Tes besoin en calories pour prisse de masse",
-            url: "https://google.com"
+            title: `${calories} calories`,
+            description: `Your daily caloric needs to bulk at +${objectifVitesse}cal/day`,
+            url: ""
           },
           {
             imageSrc: ImageTime,
-            title: "6 semaine",
-            description: "Le temps qu'il faut pour prendre 2kg de muscle sec",
-            url: "https://timerse.com"
+            title: `${objectifTemps} weeks`,
+            description: `Required time to achieve your bulking goal`,
+            url: ""
           },
           
         ]}
@@ -2196,7 +2198,7 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
       <TabGrid
         heading={
           <>
-            Checkout our <HighlightedText>menu.</HighlightedText>
+            Bulking at <HighlightedText>{calories} calories</HighlightedText>
           </>
         }
 

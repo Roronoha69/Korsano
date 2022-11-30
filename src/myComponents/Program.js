@@ -1,3 +1,67 @@
+//const { useState } = require("react")
+
+
+
+
+// Breakfast
+const [eggs,setEgges] =useState('3')
+const [toast, setToast] = useState('')
+const [goat, setGoat] = useState('')
+const [butter, setButter] =useState('')
+
+
+
+
+
+//Lunch
+const [olive, setOlive] = useState('')
+const [ tortilla, setTortilla ] = useState('')
+const [ beef, setBeef ] = useState('')
+const [ cheddar, setCheddar ] = useState('')
+const [ pesto, setPesto ] = useState('')
+const [ redB, setRedB ] = useState('')
+
+// Snack
+const [ milk, setMilk ] = useState()
+const [ pb, setPb ] = useState()
+const [ darkC, setDarkC ] = useState()
+const [ iceCream, seticeCream ] = useState()
+const [ banana, setBanana ] = useState()
+const [ redFruits, setRedFruits ] = useState()
+const [oats, setOats] = useState('')
+
+//Dinner
+const [ pasta, setPasta ] = useState()
+const [ soy, setSoy ] = useState()
+const [ peanut, setPeanut ] = useState()
+const [ vegetalSauce, setVegetalSauce ] = useState()
+const [beans, setBeans] = useState()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function personalizedProgram(paramsCal) {
 
         if (paramsCal > 2400 && paramsCal <= 2500) {
@@ -1747,7 +1811,7 @@ const [mondayPesto, setMondayPesto] = useState()
 const [tuesdayBreakfastBDC, setTuesdayBreakfastBDC] = useState('')
 
 //Collation 2 
-const [redFruits, setRedFruits] = useState()
+//const [redFruits, setRedFruits] = useState()
 
 const [tuesdayWrap, setTuesdayWrap] = useState()
 const [tuesdaySardine, setTuesdaySardines] = useState('')

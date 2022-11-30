@@ -21,6 +21,9 @@ import ImageCal from "images/icons8-fire-64.png";
 import ImageTime from "images/icons8-calendar-642.png";
 import ImageScan from "images/icons8-steak-64.png";
 
+import Back from "images/icons8-undo-64.png";
+
+
 
 
 import { initializeApp } from "firebase/app";
@@ -123,37 +126,35 @@ function Freetrial() {
   const [bej, setBej] =useState()
   const [bodyfat, setbodyfat] =useState('/')
   const [fixGaol2, setFixGoal2] =useState()
-  const [,] =useState()
+  const [,] =useState('')
   const [,] =useState()
   const [,] =useState()
   const [,] =useState()
   const [fixGoal, setFixGoal] =useState()
 
-
 // Breakfast
-  const [eggs,setEgges] =useState(3)
-  const [goat, setGoat] = useState(30)
-
-
-
-
+const [eggs, setEggs] =useState('3')
+const [toast, setToast] = useState('')
+const [goat, setGoat] = useState('')
+const [butter, setButter] =useState('')
 
 
 //Lunch
-const [olive, setOlive] = useState()
-const [ tortilla, setTortilla ] = useState()
-const [ beef, setBeef ] = useState()
-const [ cheddar, setCheddar ] = useState()
-const [ pesto, setPesto ] = useState()
-const [ red, setRed ] = useState()
+const [olive, setOlive] = useState('')
+const [ tortilla, setTortilla ] = useState('2')
+const [ beef, setBeef ] = useState('')
+const [ cheddar, setCheddar ] = useState('')
+const [ pesto, setPesto ] = useState('')
+const [ redB, setRedB ] = useState('')
 
 // Snack
 const [ milk, setMilk ] = useState()
 const [ pb, setPb ] = useState()
 const [ darkC, setDarkC ] = useState()
-const [ iceCream, seticeCream ] = useState()
+const [ iceCream, setIceCream ] = useState()
 const [ banana, setBanana ] = useState()
-const [ redFruits, setRedFruits ] = useState()
+const [ redFruits, setRedFruits ] = useState('1 ounce / 30')
+const [oats, setOats] = useState('')
 
 //Dinner
 const [ pasta, setPasta ] = useState()
@@ -161,15 +162,356 @@ const [ soy, setSoy ] = useState()
 const [ peanut, setPeanut ] = useState()
 const [ vegetalSauce, setVegetalSauce ] = useState()
 const [beans, setBeans] = useState()
-const [ , set ] = useState()
 
+const [trialR1, setR1] = useState('')
+const [trialR1p, setR1p] = useState('')
+
+const [trialR2, setR2] = useState('')
+const [trialR2p, setR2p] = useState('')
+
+const [trialR3, setR3] = useState('')
+const [trialR3p, setR3p] = useState('')
+
+const [trialR4, setR4] = useState('')
+const [trialR4p, setR4p] = useState('')
 
 
 function TrialProgram (paramsCal) {
     
   if (paramsCal > 2400 && paramsCal <= 2500) {
+        
+    setToast('2')
+    setGoat('1 ounce / 30')
+    setButter('.3 ounce / 10g')
+    setR1('570')
+    setR1p('32')
 
+
+    setOlive('1 Tbsp')
+    setBeef('3.5 ounce / 100')
+    setCheddar('1 ounce / 30')
+    setPesto('1 ounce / 30')
+    setRedB('2 ounce / 50')
+    
+    setR2('760')
+    setR2p('40')
+
+    setMilk('8.5 fl oz / 250')
+    setPb('1 ounce / 30g')
+    setDarkC('1 squarre / 10')
+    setIceCream('2 ounce / 50')
+    setBanana('1')
+    setOats('')
+
+    setR3('590')
+    setR3p('27')
+
+    setPasta('6 ounce / 170')
+    setSoy('4 ounce / 100')
+    setPeanut('.7 ounce / 20')
+    setVegetalSauce('3.5 fl oz / 100')
+    
+    
+    setR4('620')
+    setR4p('24')
+}
+
+
+  if (paramsCal > 2500 && paramsCal <= 2600) {
+        
+        setToast('2')
+        setGoat('1 ounce / 30')
+        setButter('.3 ounce / 10g')
+        setR1('570')
+        setR1p('32')
+
+
+        setOlive('1 Tbsp')
+        setBeef('3.5 ounce / 100')
+        setCheddar('1 ounce / 30')
+        setPesto('1 ounce / 30')
+        setRedB('2 ounce / 50')
+        
+        setR2('760')
+        setR2p('640')
+
+        setMilk('8.5 fl oz / 250')
+        setPb('1 ounce / 30g')
+        setDarkC('2 squarre / 20')
+        setIceCream('2 ounce / 50')
+        setBanana('1')
+        setOats('')
+
+        setR3('640')
+        setR3p('27')
+
+        setPasta('6 ounce / 170')
+        setSoy('4 ounce / 125')
+        setPeanut('1 ounce / 30')
+        setVegetalSauce('3.5 fl oz / 100')
+
+        setR4('670')
+        setR4p('27')
+
+        //2640
     }
+
+
+
+  if (paramsCal > 2600 && paramsCal <= 2700) {
+        
+    setToast('2')
+    setGoat('1 ounce / 30')
+    setButter('.6 ounce / 20')
+
+    setR1('620')
+    setR1p('33')
+
+
+    setOlive('1 Tbsp')
+    setBeef('3.5 ounce / 100')
+    setCheddar('1 ounce / 30')
+    setPesto('1 ounce / 30')
+    setRedB('2 ounce / 50')
+    
+    setR2('760')
+    setR2p('40')
+
+    setMilk('8.5 fl oz / 250')
+    setPb('1 ounce / 30g')
+    setDarkC('2 squarre / 20')
+    setIceCream('2 ounce / 50')
+    setBanana('1')
+    setOats('.7 ounce / 20')
+
+    setR3('700')
+    setR3p('15')
+
+    setPasta('6 ounce / 170')
+    setSoy('4 ounce / 125')
+    setPeanut('1 ounce / 30')
+    setVegetalSauce('3.5 fl oz / 100')
+
+    setR4('680')
+    setR4p('27')
+
+
+    //2760
+}
+
+if (paramsCal > 2700 && paramsCal <= 2800) {
+        
+  setToast('2')
+  setGoat('1 ounce / 30')
+  setButter('.6 ounce / 20')
+
+  setR1('620')
+  setR1p('33')
+
+
+  setOlive('1 Tbsp')
+  setBeef('3.5 ounce / 100')
+  setCheddar('1.3 ounce / 40')
+  setPesto('1 ounce / 30')
+  setRedB('2 ounce / 50')
+  
+  setR2('790')
+  setR2p('43')
+
+  setMilk('8.5 fl oz / 250')
+  setPb('1 ounce / 30g')
+  setDarkC('2 squarre / 20')
+  setIceCream('2 ounce / 50')
+  setBanana('')
+  setOats('.7 ounce / 20')
+
+  setR3('700')
+  setR3p('15')
+
+  setPasta('6 ounce / 170')
+  setSoy('4 ounce / 125')
+  setPeanut('1 ounce / 30')
+  setVegetalSauce('3.5 fl oz / 100')
+
+  setR4('680')
+  setR4p('27')
+
+
+  //2770
+}
+
+
+if (paramsCal > 2800 && paramsCal <= 2900) {
+        
+  setToast('2')
+  setGoat('1 ounce / 30')
+  setButter('.6 ounce / 20')
+
+  setR1('620')
+  setR1p('33')
+
+
+  setOlive('1 Tbsp')
+  setBeef('3.5 ounce / 100')
+  setCheddar('1.3 ounce / 40')
+  setPesto('1 ounce / 30')
+  setRedB('2 ounce / 50')
+  
+  setR2('790')
+  setR2p('43')
+
+  setMilk('8.5 fl oz / 250')
+  setPb('1 ounce / 30g')
+  setDarkC('2 squarre / 20')
+  setIceCream('2 ounce / 50')
+  setBanana('2')
+  setOats('.7 ounce / 20')
+
+  setR3('760')
+  setR3p('15')
+
+  setPasta('6 ounce / 170')
+  setSoy('4 ounce / 125')
+  setPeanut('1 ounce / 30')
+  setVegetalSauce('3.5 fl oz / 100')
+
+  setR4('680')
+  setR4p('27')
+
+
+  //2850
+}
+
+
+if (paramsCal > 2900 && paramsCal <= 3000) {
+        
+  setToast('2')
+  setGoat('1 ounce / 30')
+  setButter('.6 ounce / 20')
+
+  setR1('620')
+  setR1p('33')
+
+
+  setOlive('1 Tbsp')
+  setBeef('3.5 ounce / 100')
+  setCheddar('1.3 ounce / 40')
+  setPesto('1.3 ounce / 30')
+  setRedB('3 ounce / 90')
+  
+  setR2('820')
+  setR2p('40')
+
+  setMilk('8.5 fl oz / 250')
+  setPb('1 ounce / 30g')
+  setDarkC('2 squarre / 20')
+  setIceCream('2 ounce / 50')
+  setBanana('2')
+  setOats('1 ounce / 30')
+
+  setR3('800')
+  setR3p('16')
+
+  setPasta('6 ounce / 170')
+  setSoy('4 ounce / 125')
+  setPeanut('1 ounce / 30')
+  setVegetalSauce('3.5 fl oz / 100')
+
+  setR4('720')
+  setR4p('27')
+
+
+  //2950
+}
+
+
+if (paramsCal > 3000 && paramsCal <= 3100) {
+  
+  
+
+  setToast('2')
+  setGoat('1 ounce / 30')
+  setButter('.6 ounce / 20')
+
+  setR1('620')
+  setR1p('33')
+
+
+  setOlive('1 Tbsp')
+  setBeef('4.5 ounce / 125')
+  setCheddar('1.3 ounce / 40')
+  setPesto('1.3 ounce / 40')
+  setRedB('3 ounce / 90')
+  
+  setR2('860')
+  setR2p('50')
+
+  setMilk('8.5 fl oz / 250')
+  setPb('1 ounce / 30g')
+  setDarkC('2 squarre / 20')
+  setIceCream('2 ounce / 50')
+  setBanana('2')
+  setOats('1.2 ounce / 40')
+
+  setR3('830')
+  setR3p('19')
+
+  setPasta('8 ounce / 230')
+  setSoy('4 ounce / 125')
+  setPeanut('1 ounce / 30')
+  setVegetalSauce('3.5 fl oz / 100')
+
+  setR4('750')
+  setR4p('32')
+
+
+  //3060
+}
+
+
+if (paramsCal > 3100 && paramsCal <= 3200) {
+    setEggs('4')  
+  setToast('3')
+  setGoat('1 ounce / 30')
+  setButter('.6 ounce / 20')
+
+  setR1('790')
+  setR1p('42')
+
+
+  setOlive('1 Tbsp')
+  setBeef('4.5 ounce / 125')
+  setCheddar('1.3 ounce / 40')
+  setPesto('1.3 ounce / 40')
+  setRedB('3 ounce / 90')
+  
+  setR2('860')
+  setR2p('50')
+
+  setMilk('8.5 fl oz / 250')
+  setPb('1 ounce / 30g')
+  setDarkC('2 squarre / 20')
+  setIceCream('2 ounce / 50')
+  setBanana('2')
+  setOats('1.2 ounce / 40')
+
+  setR3('830')
+  setR3p('19')
+
+  setPasta('8 ounce / 230')
+  setSoy('4 ounce / 125')
+  setPeanut('1 ounce / 30')
+  setVegetalSauce('3.5 fl oz / 100')
+
+  setR4('750')
+  setR4p('32')
+
+
+  //3060
+}
+
+
+
 
 }
 
@@ -239,7 +581,6 @@ function TrialProgram (paramsCal) {
         setCalories(bej+200)
       }
 
- 
     
   }
 
@@ -263,7 +604,7 @@ function TrialProgram (paramsCal) {
 
   }
 
-  function handleResult2() {
+  function handleResult2(params) {
     setNumber(n+1)
     if (gender == 'femme'){
     setbodyfat(Math.round(((495/((1.29579 - 0.35004*Math.log10(tdt+hanche-tdc)) + 0.22100*Math.log10(taille)))-450)*100)/100)
@@ -271,12 +612,16 @@ function TrialProgram (paramsCal) {
     if (gender == 'homme'){
     setbodyfat(Math.round(((495/((1.0324 - 0.19077*Math.log10(tdt-tdc) ) + 0.15456*Math.log10(taille)))-450)*100)/100)
     }
+    if (params == 'X'){
+      setbodyfat('X')
+      }
 
     setCalories(bej+objectifVitesse)
     
 
       handleSubmit()
 
+      TrialProgram(bej+objectifVitesse)
   } 
 
 
@@ -303,50 +648,62 @@ function TrialProgram (paramsCal) {
     })
   }
 
-console.log(calories);
+
+
+// margin logo
+// reduire la back btn
 
 
   return (
     <div className='free'>
       
 <HeaderStyle>
-   <Header />
+    <Header />
 </HeaderStyle>
 
+
+
+
 <div>
+
+
+
   {/* <div className={`test ${n < 10? '':'invisible'}`}> */}
   <div className={`test ${n < 10? '':'invisible'}`}>
-
+  
+  <div className={`back-btn ${n == 1? 'invisible':''}`} onClick={()=> setNumber(n-1)}>
+  <img src={Back} alt="" />
+  </div>
 
     <div className={`quiz ${quizStart? '':'invisible'}`}>
 
-     <div className={`questions ${n==1? '':'invisible'}`}>
-        <h1>Tu es ?</h1>
-      <button onClick={()=> hundleQuizz(19)}>Un homme</button>
-      <button onClick={()=> hundleQuizz(20)}>Une femme</button>
+      <div className={`questions ${n==1? '':'invisible'}`}>
+        <h1>Are you?</h1>
+      <button onClick={()=> hundleQuizz(19)}>Men</button>
+      <button onClick={()=> hundleQuizz(20)}>Women</button>
       </div>
 
       <div className={`questions ${n==2? '':'invisible'}`}>
-      <h1>Combien de kilos veux-tu prendre ?</h1>
+      <h1>How far do you you want to bulk? ( in kg )</h1>
       {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> 
         
       */}
       <form action="">
- <input type="number" placeholder='Kg' max="8" min="1"onChange={e => setObjectifKilos(e.target.value)}/>
+  <input type="number" placeholder='Kg' max="10" min="1"onChange={e => setObjectifKilos(e.target.value)}/>
     
         </form>
           <p onClick={() => setNumber(n+1)}>
-              Suivant
+              Next
             </p>
       
       {/* <button onClick={()=> hundleQuizz(3)}>Sèche musculaire</button> */}
       </div>
 
       <div className={`questions ${n==3? '':'invisible'}`}>
-      <h1>As quel vitesse tu veux faire ta prisse de masse ? (modifiable) </h1>
-      <button onClick={()=> temps(0.3)}>+300 cal/j</button>
-      <button onClick={()=> temps(0.4)}>+400 cal/j</button>
-      <button onClick={()=> temps(0.5)}>+500 cal/j</button>
+      <h1>How fast do you want to go? </h1>
+      <button onClick={()=> temps(0.3)}>+300 cal/day</button>
+      <button onClick={()=> temps(0.4)}>+400 cal/day</button>
+      <button onClick={()=> temps(0.5)}>+500 cal/day</button>
 
       
       </div>
@@ -356,7 +713,7 @@ console.log(calories);
       {/* <button onClick={()=> hundleQuizz(1)}>Perdre du poid.</button> */}
       <input type="text" placeholder='Jojo' onChange={e => setFirstName(e.target.value)}/>
       <p onClick={() => setNumber(n+1)}>
-              Suivant
+              Next
             </p>
       
       
@@ -369,30 +726,30 @@ console.log(calories);
 
 
       <div className={`questions ${n==5? '':'invisible'}`}>
-        <h1>Quel est ton niveau d'activité physique ?</h1>
-      <button onClick={()=> hundleQuizz(15)}>Le néant</button>
-      <button onClick={()=> hundleQuizz(16)}>1 à 3 fois par semaine</button>
-      <button onClick={()=> hundleQuizz(17)}>3 à 5 fois par semaine</button>
-      <button onClick={()=> hundleQuizz(18)}>6+ par semaine</button>
+        <h1>How much do you train per week ?</h1>
+      <button onClick={()=> hundleQuizz(15)}>1</button>
+      <button onClick={()=> hundleQuizz(16)}>2 to 3</button>
+      <button onClick={()=> hundleQuizz(17)}>4 to 5</button>
+      <button onClick={()=> hundleQuizz(18)}>6 & more</button>
       </div>
 
       <div className={`questions ${n==6? '':'invisible'}`}>
-      <h1>Ton travail est plutot :</h1>
-      <button onClick={()=> hundleQuizz(11)}>Physiquement calme</button>
-      <button onClick={()=> hundleQuizz(12)}>Un peu actif</button>
-      <button onClick={()=> hundleQuizz(13)}>Actif, je marche beaucoup</button>
-      <button onClick={()=> hundleQuizz(14)}>Physique ou port de charges</button>
+      <h1>How intense is your work?</h1>
+      <button onClick={()=> hundleQuizz(11)}>Sitting most of the time</button>
+      <button onClick={()=> hundleQuizz(12)}>Slightly active</button>
+      <button onClick={()=> hundleQuizz(13)}>Lot of walking ( 12k step & more )</button>
+      <button onClick={()=> hundleQuizz(14)}>Heavy liftings or intense works</button>
       </div>
 
       <div className={`questions ${n==7? '':'invisible'}`}>
-        <h1>On vas calculer tes besoins en calories :</h1>
+        <h1>Let's calcul your calories needs {firstName}</h1>
             <form action="">
-              <input type="number" placeholder='Taille (cm)' onChange={e => setTaille(e.target.value)}/>
-              <input type="number" placeholder='Poid (kg)' onChange={e => setPoid(e.target.value)}/>
-              <input type="number" placeholder='Age (années)' onChange={e => setAge(e.target.value)}/>
+              <input type="number" placeholder='Height (cm)' onChange={e => setTaille(e.target.value)}/>
+              <input type="number" placeholder='Weight (kg)' onChange={e => setPoid(e.target.value)}/>
+              <input type="number" placeholder='Age (year)' onChange={e => setAge(e.target.value)}/>
             </form>
             <p onClick={()=> handleResult() }>
-              Suivant
+              Next
             </p>
       </div>
 
@@ -400,7 +757,7 @@ console.log(calories);
       <h1>Enter your email</h1>
       <input type="text" placeholder='exemple@gmail.com' onChange={e => setEmail(e.target.value)}/>
       <p onClick={()=> setNumber(n+1) }>
-              Suivant
+              Next
         </p>
 
       </div>
@@ -408,14 +765,20 @@ console.log(calories);
       
 
       <div className={`questions ${n==9? '':'invisible'}`}>
-        <h1>Calcul du % de graisse selon la méthode de l'US NAVY.</h1>
+        <h1>Bodyfat estimation (US NAVY method).</h1>
       <form action="">
-        <input type="number" placeholder='Tour de taille (nombril)' onChange={e => setTdt(e.target.value)}/>
-        <input type="number" placeholder='Tour de cou (depuis la base)' onChange={e => setTdc(e.target.value)}/>
+        <input type="number" placeholder="Waist size cm (leave empty if you don't know)" onChange={e => setTdt(e.target.value)}/>
+        <input type="number" placeholder="Neck size cm (leave empty if you don't know)" onChange={e => setTdc(e.target.value)}/>
         <input className={gender=='homme'?'invisible':''} type="number" placeholder='Tour de hanche' onChange={e => setHanche(e.target.value)}/>
       </form>
+      <div className='black-btn'>
+      <p  onClick={()=> handleResult2('X') }>
+        Skip
+      </p>
+      </div>
+      
       <p onClick={()=> handleResult2() }>
-        Résultats
+        Résults
       </p>
       </div>
 
@@ -434,44 +797,44 @@ console.log(calories);
 />
 </div> */}
 
-<div className={n==1? '':'invisible'}>
+<div className={n==10? '':'invisible'}>
 <Features
         heading={
           <>
-            Analyse <HighlightedText>Macronutriments.</HighlightedText>
+            Your personalized <HighlightedText>Scan Results</HighlightedText>
           </>
         }
         cards={[
           {
             imageSrc: ImageCal,
             title: `${bej} calories `,
-            description: "Vos besoins caloriques quotidient",
-            url: "https://google.com"
+            description: "Your daily caloric needs",
+            url: ""
           },
           {
             imageSrc: ImageScan,
             //title: `${Math.round(prots)}g`,
             title: `entre ${Math.round(poid)*1.5}g et ${Math.round(poid)*2}g`,
-            description: "Vos besoin quotidient en proteines ( entre 1.5 et 2 x le poid de corps ) ",
-            url: "https://timerse.com"
+            description: "Your daily protein needs. Between 1.5 et 2 times your weight (kg)",
+            url: ""
           },
           {
             imageSrc: ImageProtein,
             title: `${bodyfat}%`,
-            description: "Notre estimation de votre bodyfat (formule US navy)",
-            url: "https://reddit.com"
+            description: "Your bodyfat estimation (US navy formula)",
+            url: ""
           },
           {
             imageSrc: ImageMuscle,
             title: calories,
-            description: "Tes besoin en calories pour prisse de masse",
-            url: "https://google.com"
+            description: `Your daily caloric needs to bulk at +${objectifVitesse}cal/day`,
+            url: ""
           },
           {
             imageSrc: ImageTime,
-            title: `${objectifTemps} semaines`,
-            description: `Le temps qu'il faut pour prendre ${objectifKilos}kg de muscle sec`,
-            url: "https://timerse.com"
+            title: `${objectifTemps} weeks`,
+            description: `Required time to take ${objectifKilos}kg of lean muscle`,
+            url: ""
           },        
         ]}
         />
@@ -481,7 +844,7 @@ console.log(calories);
       <TabGrid
         heading={
           <>
-            Bulking at <Incline></Incline><HighlightedText>{calories} calories.</HighlightedText><Incline/>
+            Bulking at <Incline></Incline><HighlightedText>{calories} calories</HighlightedText><Incline/>
           </>
         }
 
@@ -498,8 +861,8 @@ console.log(calories);
         content4: `${goat}g goat cheese`,
         content5: "",
 
-        price: "710 cal",
-        price2: "87g protein",
+        price: `${trialR1} cal`,
+        price2: `${trialR1p}g protein`,
         rating: "Breakfast",
         reviews: "Breakfast",
         url: "https://www.youtube.com/embed/_GuOjXYl5ew"
@@ -515,10 +878,10 @@ console.log(calories);
         content4: `${beef}g beef`,
         content5: `${cheddar}g cheddar`,
         content6: `${pesto}g pesto`,
-        content7: `${red}g red beans `,
+        content7: `${redB}g red beans `,
 
-        price: "710 cal",
-        price2: "87g protein",
+        price: `${trialR2} cal`,
+        price2: `${trialR2p}g protein`,
         rating: "Lunch",
         reviews: "Breakfast",
         url: "https://www.youtube.com/embed/_GuOjXYl5ew"
@@ -534,8 +897,8 @@ console.log(calories);
         content5: `${banana} banana`,
         content6: `${redFruits}g red fruits`,
 
-        price: "710 cal",
-        price2: "87g protein",
+        price: `${trialR3} cal`,
+        price2: `${trialR3p}g protein`,
         rating: "Snack",
         reviews: "Breakfast",
         url: "https://www.youtube.com/embed/_GuOjXYl5ew"
@@ -551,9 +914,9 @@ console.log(calories);
         content5: `${vegetalSauce}g vegetal cream`,
         
 
-        price: "710 cal",
-        price2: "87g protein",
-        rating: "Snack",
+        price: `${trialR4} cal`,
+        price2: `${trialR4p}g protein`,
+        rating: "Dinner",
         reviews: "Breakfast",
         url: "https://www.youtube.com/embed/_GuOjXYl5ew"
       },
@@ -567,10 +930,10 @@ console.log(calories);
         content: "La description",
         
 
-        price: "710 cal",
-        price2: "87g protein",
-        rating: "Breakfast",
-        reviews: "Breakfast",
+        price: "Exemples",
+        price2: "Blabla",
+        rating: "Ta mere",
+        
         url: "https://www.youtube.com/embed/_GuOjXYl5ew"
       }
       
@@ -583,20 +946,6 @@ console.log(calories);
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
 <div className="footer-fix">
     <Footer /> 
@@ -604,15 +953,9 @@ console.log(calories);
 </div>
   )
 
-
-
 }
 const HeaderStyle = styled.div`
 padding-top: 1rem;
-
-
 `
-
-
 
 export default Freetrial
