@@ -23,7 +23,7 @@ import ImageScan from "images/icons8-steak-64.png";
 
 import Back from "images/icons8-undo-64.png";
 
-
+import newLogo from "images/logo.png"
 
 
 import { initializeApp } from "firebase/app";
@@ -622,6 +622,9 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
       handleSubmit()
 
       TrialProgram(bej+objectifVitesse)
+      setTimeout(() => {
+        setNumber(11)
+      }, 5100);
   } 
 
 
@@ -669,9 +672,9 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
 
 
   {/* <div className={`test ${n < 10? '':'invisible'}`}> */}
-  <div className={`test ${n < 10? '':'invisible'}`}>
+  <div className={`test ${n < 11? '':'invisible'}`}>
   
-  <div className={`back-btn ${n == 1? 'invisible':''}`} onClick={()=> setNumber(n-1)}>
+  <div className={`back-btn ${n == 1 || n ==10? 'invisible':''}`} onClick={()=> setNumber(n-1)}>
   <img src={Back} alt="" />
   </div>
 
@@ -772,14 +775,45 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
         <input className={gender=='homme'?'invisible':''} type="number" placeholder='Tour de hanche' onChange={e => setHanche(e.target.value)}/>
       </form>
       <div className='black-btn'>
-      <p  onClick={()=> handleResult2('X') }>
-        Skip
-      </p>
+      
       </div>
       
       <p onClick={()=> handleResult2() }>
         Résults
       </p>
+      </div>
+
+
+      <div  className={n==10? '' : 'invisible' }>
+      
+      
+      <div className="all-effect">
+        {/* <h1>NO TIME TO WASTE</h1> */}
+        <img src={newLogo} alt="" />
+        <div className="body">
+
+          {/* <button onClick={()=> getData()} >
+          Acces data
+        </button> */}
+
+      <div id="wrapper">
+        
+  <div id="mouse"></div>
+  <div className="loader">
+    
+  </div>
+  <div className="loading-bar">
+    <div className="progress-bar"></div>
+  </div>
+  <div className="status">
+    <div className="state"></div>
+    <div className="percentage"></div>
+  </div>
+</div>
+</div>
+</div>
+        
+        
       </div>
 
       
@@ -797,7 +831,7 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
 />
 </div> */}
 
-<div className={n==10? '':'invisible'}>
+<div className={n==11? '':'invisible'}>
 <Features
         heading={
           <>

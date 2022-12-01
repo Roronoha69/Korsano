@@ -18,8 +18,8 @@ import DesignIllustration from "../../images/404-page.png";
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col lg:flex-row md:items-center max-w-screen-xl mx-auto py-20 md:py-24`;
 const LeftColumn = tw.div`relative lg:w-6/12 lg:pr-12 flex-shrink-0 text-center lg:text-left`;
-const RightColumn = tw.div`relative mt-12 lg:mt-0 flex flex-col justify-center`;
-
+//const RightColumn = tw.div`relative mt-12 lg:mt-0 flex flex-col justify-center`;
+const RightColumn = tw.div`w-full sm:w-5/6 lg:w-1/2 mt-16 lg:mt-0 lg:pl-8`;
 const Heading = tw.h1`font-black text-3xl md:text-5xl leading-snug max-w-3xl`;
 const Paragraph = tw.p`my-5 lg:my-8 text-sm lg:text-base font-medium text-gray-600 max-w-lg mx-auto lg:mx-0`;
 
@@ -37,6 +37,16 @@ const WatchVideoButton = styled.button`
 
 const IllustrationContainer = tw.div`flex justify-center md:justify-end items-center relative max-w-3xl lg:max-w-none`;
 
+
+
+const StyledResponsiveVideoEmbed = styled(ResponsiveVideoEmbed)`
+  padding-bottom: 56.25% !important;
+  padding-top: 0px !important;
+  ${tw`rounded`}
+  iframe {
+    ${tw`rounded bg-black shadow-xl`}
+  }
+`;
 // Random Decorator Blobs (shapes that you see in background)
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none opacity-5 absolute left-0 bottom-0 h-64 w-64 transform -translate-x-2/3  -z-10`}
@@ -81,20 +91,17 @@ export default ({
           <LeftColumn>
             <Heading>{heading}</Heading>
             <Paragraph>{description}</Paragraph>
-            <Actions>
+            {/* <Actions>
               <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>
               
-            </Actions>
+            </Actions> */}
           </LeftColumn>
           <RightColumn>
-            <IllustrationContainer>
-              <img
-                css={imageCss}
-                src={imageSrc}
-                alt="Hero"
-              />
-              {imageDecoratorBlob && <DecoratorBlob2 />}
-            </IllustrationContainer>
+            
+            <StyledResponsiveVideoEmbed
+              url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=0&responsive=1"
+              background="transparent"
+            />
           </RightColumn>
         </TwoColumn>
         <DecoratorBlob1 />

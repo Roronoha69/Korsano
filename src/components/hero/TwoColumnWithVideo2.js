@@ -49,10 +49,14 @@ const WatchVideoButton = styled.button`
 `;
 
 const Lex = styled.div`
-color: black;
-margin-top: 20px;
-margin-bottom: 10px;
+color: red;
+
 ` 
+
+const OldPrice = styled.div`
+text-decoration:line-through;
+` 
+
 const IllustrationContainer = tw.div`flex justify-center md:justify-end items-center relative max-w-3xl lg:max-w-none`;
 
 // Random Decorator Blobs (shapes that you see in background)
@@ -96,14 +100,14 @@ export default ({
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const item = {
-    price: "price_1Lf3bnHP0YfNGUskNcZTr2jS",
+    price: "price_1MAFUkHP0YfNGUskoPrUFI03",
     quantity: 1
   };
 
   const checkoutOptions = {
     lineItems: [item],
     mode: "payment",
-    successUrl: `${window.location.origin}/404`,
+    successUrl: `${window.location.origin}/success`,
     cancelUrl: `${window.location.origin}/`
   };
 
@@ -124,7 +128,7 @@ export default ({
 
   return (
     <>
-      <Header />
+      
       <Fix>
       <Container>
         <TwoColumn>
@@ -143,15 +147,11 @@ export default ({
           <RightColumn>
             <Heading>{heading}</Heading>
             <Paragraph>{description}
-            <Lex><b>CONTENU</b></Lex>
-            <ul>
-              <li>🗸 Diète adaptée pour ton mode de vie</li>
-              <li>🗸 Détail complet des calories et macronutriments</li>
-              <li>🗸 Conseils adaptés à tes objectifs</li>
-              <li>🗸 Des listes de courses adaptés et pour tous budjets</li>
-              
-            </ul></Paragraph>
-            <p> <b>5€</b></p>
+            
+            </Paragraph>
+            
+            <OldPrice>70$</OldPrice>
+            <p><b> <Lex>35$ </Lex></b></p>
             <Actions>
                {/* <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>  */}
 

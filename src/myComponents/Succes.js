@@ -58,6 +58,7 @@ export default () => {
   const [objectifVitesse, setObjectifVitesse] = useState()
   const [firstName, setFirstName] = useState('')
 
+  const [plan, setPlan] = useState(false)
 
 
   const firebaseConfig = {
@@ -86,6 +87,8 @@ export default () => {
   
     const getData = async () => {
       
+
+
     const querySnapshot = await getDocs(collection(db, `${user.nickname}`));
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
@@ -99,9 +102,10 @@ export default () => {
       setFireData(doc.id, " => ", doc.data())
       bugSolved(true)
       personalizedProgram(doc.data().stringCal)
-      // setFirstname(doc.data().firstName)
-      // setObjectifTemps(doc.data().stringTime)
-      // setObjectifVitesse(doc.data().stringVitesse)
+      setFirstName(doc.data().firstName)
+
+      
+
     });
       
     }
@@ -110,16 +114,27 @@ export default () => {
             console.log(user);
                     
             if (user && !isLoading) {
-              setUserEmail(user.email)
-                          setNickname(user.nickname)
+                          //setUserEmail(user.email)
+                          //setNickname(user.nickname)
                           console.log('here');
                           console.log(user.email);
                           console.log(user.nickname);
+              
+                      
+                        getData()
+                      
+                      setTimeout(() => {
+                        setPlan(true)
+                      }, 5000);
+              
                       
             }
+
+            
+            
                         
           
-        }, [])
+        },[user])
         
     
     
@@ -171,6 +186,8 @@ export default () => {
       if (response.data = true){
         SetData(`${stateEmail} fait parti des clients`)
       }
+
+
     
   }
 
@@ -2120,13 +2137,38 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
 
     <div> 
 
-      <div  className={bug? 'invisible' : '' }>
-        Y'a un soucis avec les state donc je dois prendre les data en 2 temps, met un loader et une question en dessous
-        <button onClick={()=> getData()} >
+      <div  className={plan? 'invisible' : '' }>
+      
+      
+      <div className="all-effect">
+        <div className="body">
+
+          {/* <button onClick={()=> getData()} >
           Acces data
-        </button>
+        </button> */}
+
+      <div id="wrapper">
+  <div id="mouse"></div>
+  <div className="loader">
+    
+  </div>
+  <div className="loading-bar">
+    <div className="progress-bar"></div>
+  </div>
+  <div className="status">
+    <div className="state"></div>
+    <div className="percentage"></div>
+  </div>
+</div>
+</div>
+</div>
+        
+        
       </div>
-      <div className={bug? '' : 'invisible' }>
+
+
+
+      <div className={bug && plan?'' : 'invisible' }>
     <AnimationRevealPage>
         
 <div className={calories? '' : 'invisible'}>

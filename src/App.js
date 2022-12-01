@@ -108,10 +108,13 @@ export default function App() {
           <LoginPage />
         </Route>
         
-       <Route path="/">
+        <Route path="/">
           <RestaurantLandingPage />
-        </Route>
+        </Route> 
 
+        {/* <Route path="/">
+          <PricingPage />
+        </Route> */}
 
         
       </Switch>

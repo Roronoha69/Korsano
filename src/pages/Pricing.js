@@ -8,6 +8,8 @@ import FAQ from "components/faqs/SingleCol.js";
 import tw from "twin.macro";
 import styled from 'styled-components';
 
+import Hero from "components/hero/BackgroundAsImage.js";
+
 
 
 
@@ -31,9 +33,10 @@ export default () => {
 
 
   return (
-   
+    
     <AnimationRevealPage>
 
+      <Hero />
       <Pricing 
           heading={<>PRENNEZ UNE LONGUEUR <Incline><HighlightedText>D'AVANCE</HighlightedText></Incline></>}
           description="Remplis notre questionnaire nutrition qui nous permettra de fixer tes objectifs pour que nous puissions réaliser ton plan nutritionnel détaillé."

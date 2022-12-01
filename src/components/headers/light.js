@@ -6,7 +6,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
-import logo from "../../images/logo.PNG";
+import logo from "../../images/logo.png";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
@@ -15,7 +15,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 const Header = tw.header`
   flex justify-between items-center
   max-w-screen-xl mx-auto
- 
+
   
 `;
 
@@ -80,9 +80,9 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
 
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/contact">Nous contacter</NavLink>
+      <NavLink href="/contact">Contact</NavLink>
 
-      <NavLink href="/tarifs">Plans personalisés</NavLink>
+  
       
       <NavLink
       tw="lg:ml-12!"
@@ -93,7 +93,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
         })
       }
     >
-     Connection
+      Connection
     </NavLink>
 
 
@@ -101,15 +101,15 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       {/* <NavLink href="/login" tw="lg:ml-12!">
         Connection
       </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/free-trial">Essai gratuit</PrimaryLink>
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/free-trial">Free Trail</PrimaryLink>
     </NavLinks>
   ];
 
   const defaultLinks2 = [
     <NavLinks key={1}>
-      <NavLink href="/contact">Nous contacter</NavLink>
+      <NavLink href="/contact">Contact</NavLink>
 
-      <NavLink href="/tarifs">Plans personalisés</NavLink>
+      
 
      
       <NavLink
@@ -117,7 +117,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       style={{cursor:'poiner'}}
       onClick={() => logout()}
     >
-      Déconnection
+      Disconnection
     </NavLink>
 
 
@@ -125,7 +125,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       {/* <NavLink href="/login" tw="lg:ml-12!">
         Connection
       </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/error">Mon compte</PrimaryLink>
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/error">My program</PrimaryLink>
     </NavLinks>
   ];
 
