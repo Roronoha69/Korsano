@@ -12,6 +12,12 @@ import { ReactComponent as ChevronRightIcon } from "feather-icons/dist/icons/che
 //import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-blob-4.svg";
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-5.svg";
 
+import shape1 from "../../images/transformation1.JPG";
+import shape11 from "../../images/transformation.JPG";
+
+import shape2 from "../../images/transformation2-1.JPG";
+import shape22 from "../../images/transformation2-2.JPG";
+
 import "slick-carousel/slick/slick.css";
 
 const Container = tw.div`relative`;
@@ -79,23 +85,23 @@ export default ({
   const defaultTestimonials = [
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-1.2.1&auto=format&fit=crop&w=1024&q=80",
-      profileImageSrc:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
+        shape1,
+      imageSrc2:
+      shape11,
       quote:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Charlotte Hale",
-      customerTitle: "CEO, Delos Inc."
+      "I find it hard to imagine that it's me on the old photo, yet it only took me 8 months to build a real physique",
+      customerName: "Assane M",
+      customerTitle: "Software engineer"
     },
     {
       imageSrc:
-        "https://images.unsplash.com/photo-1523952578875-e6bb18b26645?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1024&q=80",
-      profileImageSrc:
-        "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
+      shape2,   
+      imageSrc2: 
+      shape22, 
       quote:
-        "Sinor Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.",
-      customerName: "Adam Cuppy",
-      customerTitle: "Founder, EventsNYC"
+      "I gained 10kg in 6 months. 6 months not 2 years not 1 year or whatever. Don't waste your time, it's actually easy to gain mass with the right diet",
+      customerName: "Adam C",
+      customerTitle: "Computer Science Student"
     }
   ];
 
@@ -116,6 +122,7 @@ export default ({
                 {testimonials.map((testimonial, index) => (
                   <ImageAndControlContainer key={index}>
                     <Image imageSrc={testimonial.imageSrc} />
+                    <Image imageSrc={testimonial.imageSrc2} />
                     <ControlContainer>
                       <ControlButton onClick={imageSliderRef?.slickPrev}>
                         <ChevronLeftIcon />
@@ -140,7 +147,8 @@ export default ({
                         </Quote>
                       </QuoteContainer>
                       <CustomerInfo>
-                        <CustomerProfilePicture src={testimonial.profileImageSrc} alt={testimonial.customerName} />
+                        {/* <CustomerProfilePicture src={testimonial.profileImageSrc} alt={testimonial.customerName} /> */}
+
                         <CustomerTextInfo>
                           <CustomerName>{testimonial.customerName}</CustomerName>
                           <CustomerTitle>{testimonial.customerTitle}</CustomerTitle>

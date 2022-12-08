@@ -25,8 +25,8 @@ import PricingPage from "pages/Pricing.js";
 import AboutUsPage from "pages/AboutUs.js";
 import ContactUsPage from "pages/ContactUs.js";
 import BlogIndexPage from "pages/BlogIndex.js";
-import TermsOfServicePage from "pages/TermsOfService.js";
-import PrivacyPolicyPage from "pages/PrivacyPolicy.js";
+import TermsOfServicePage from "pages/TermsOfServiceFR.js";
+import PrivacyPolicyPage from "pages/PrivacyPolicyFR.js";
 
 import LoginPageImageSrc from "images/demo/LoginPage.jpeg";
 import SignupPageImageSrc from "images/demo/SignupPage.jpeg";
@@ -97,7 +97,7 @@ import SimpleFiveColumnFooter from "components/footers/SimpleFiveColumn.js";
 import FiveColumnWithInputFormFooter from "components/footers/FiveColumnWithInputForm.js";
 import FiveColumnWithBackgroundFooter from "components/footers/FiveColumnWithBackground.js";
 import FiveColumnDarkFooter from "components/footers/FiveColumnDark.js";
-import MiniCenteredFooter from "components/footers/MiniCenteredFooter.js";
+import MiniCenteredFooter from "components/footers/MiniCenteredFooter2.js";
 
 
 export const components = {

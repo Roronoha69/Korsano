@@ -4,7 +4,7 @@ import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 
-import Header from "../headers/light.js";
+import Header from "../headers/light2.js";
 
 import ReactModalAdapter from "../../helpers/ReactModalAdapter.js";
 import ResponsiveVideoEmbed from "../../helpers/ResponsiveVideoEmbed.js";
@@ -98,10 +98,20 @@ export default ({
           </LeftColumn>
           <RightColumn>
             
-            <StyledResponsiveVideoEmbed
+          <IllustrationContainer>
+              <img
+                css={imageCss}
+                src={imageSrc}
+                alt="Hero"
+              />
+              {imageDecoratorBlob && <DecoratorBlob2 />}
+            </IllustrationContainer>
+
+
+            {/* <StyledResponsiveVideoEmbed
               url="//player.vimeo.com/video/374265101?title=0&portrait=0&byline=0&autoplay=0&responsive=1"
               background="transparent"
-            />
+            /> */}
           </RightColumn>
         </TwoColumn>
         <DecoratorBlob1 />

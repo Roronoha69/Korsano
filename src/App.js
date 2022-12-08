@@ -3,10 +3,11 @@ import "styles/globalStyles.css";
 import React from "react";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
- import RestaurantLandingPage from "demos/RestaurantLandingPage.js";
- import Freetrial from "myComponents/Freetrial/Freetrial"
+ import RestaurantLandingPage from "demos/RestaurantLandingPageFR";
+ import Freetrial from "myComponents/Freetrial/FreetrialFR"
  import Error from "myComponents/Error/Error"
  import Qcm from "myComponents/QCM/Qcm"
+ import Beta from "myComponents/Beta"
 
 
 /* Inner Pages */
@@ -50,6 +51,10 @@ export default function App() {
 
         <Route path="/free-trial">
           <Freetrial />
+        </Route> 
+
+        <Route path="/beta">
+          <Beta />
         </Route> 
 
 

@@ -100,9 +100,10 @@ export default ({
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const item = {
-    price: "price_1MAFUkHP0YfNGUskoPrUFI03",
+    price: "price_1MBQ5VHP0YfNGUskhXoN5fdy",
     quantity: 1
   };
+
 
   const checkoutOptions = {
     lineItems: [item],
@@ -150,12 +151,12 @@ export default ({
             
             </Paragraph>
             
-            <OldPrice>70$</OldPrice>
-            <p><b> <Lex>35$ </Lex></b></p>
+            <OldPrice></OldPrice>
+            <p><b> <Lex></Lex></b></p>
             <Actions>
-               {/* <PrimaryButton as="a" href={primaryButtonUrl}>{primaryButtonText}</PrimaryButton>  */}
+                <PrimaryButton as="a" href='https://buy.stripe.com/test_6oE14g9ey2au3vO6op'>{primaryButtonText}</PrimaryButton> 
 
-              <PrimaryButton onClick={redirectToCheckout} disabled={isLoading} >{primaryButtonText}</PrimaryButton>
+              {/* <PrimaryButton onClick={redirectToCheckout} disabled={isLoading} >{primaryButtonText}</PrimaryButton> */}
               
             </Actions>
           </RightColumn>

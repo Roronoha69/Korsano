@@ -2,10 +2,10 @@ import React from "react";
 import tw from "twin.macro";
 import styled from "styled-components";
 import {Container as ContainerBase } from "components/misc/Layouts.js"
-import logo from "../../images/logo.png";
-import { ReactComponent as FacebookIcon } from "../../images/facebook-icon.svg";
-import { ReactComponent as TwitterIcon } from "../../images/twitter-icon.svg";
-import { ReactComponent as YoutubeIcon } from "../../images/youtube-icon.svg";
+import logo from "../../images/logoWhite.png";
+import { ReactComponent as FacebookIcon } from "images/icons8-tiktok.svg";
+import { ReactComponent as TwitterIcon } from "images/icons8-instagram.svg";
+import { ReactComponent as YoutubeIcon } from "images/youtube-icon.svg";
 
 
 const Container = tw(ContainerBase)`bg-gray-900 text-gray-100 -mx-8 -mb-8`
@@ -39,10 +39,10 @@ export default () => {
             <LogoText>Korsano</LogoText>
           </LogoContainer>
           <LinksContainer>
-            <Link href="/">Acceuil</Link>
-            <Link href="/vie-prive">Politique de confidentialité</Link>
-            <Link href="/cgu">CGU</Link>
-        
+          <Link href="/">Home</Link>
+            <Link href="/vie-prive">Privacy Policy</Link>
+            <Link href="/cgu">GCU</Link>
+         
           </LinksContainer>
           <SocialLinksContainer>
             <SocialLink href="https://facebook.com">
@@ -56,7 +56,7 @@ export default () => {
             </SocialLink>
           </SocialLinksContainer>
           <CopyrightText>
-            &copy; Copyright 2022, Korsano. Tous droits réservés.
+            &copy; Copyright 2022, KORSANO. All Rights Reserved.
           </CopyrightText>
         </Row>
       </Content>

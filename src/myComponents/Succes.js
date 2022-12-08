@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import Stripe from 'stripe';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from "axios";
-import './Success.scss'
+import './Success.scss';
 
 import styled from 'styled-components';
 import tw from "twin.macro";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
-import Hero from "components/hero/TwoColumnWithVideo.js";
+import Hero from "components/hero/TwoColumnWithVideoConnection.js";
 import Features from "components/features/ThreeColSimple.js";
 import MainFeature from "components/features/TwoColWithButton.js";
 import MainFeature2 from "components/features/TwoColSingleFeatureWithStats2.js";
@@ -19,6 +19,8 @@ import TabGrid from "components/cards/TabCardGrid.js";
 import Testimonial from "components/testimonials/ThreeColumnWithProfileImage.js";
 import DownloadApp from "components/cta/DownloadApp.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
+
+import Header from "components/headers/light.js";
 
 
 import ImageProtein from "images/icons8-heart-with-pulse-64.png";
@@ -37,12 +39,16 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 
 
 export default () => {
+  
   const { user, isLoading } = useAuth0();
   const [stateEmail, setEmail] = useState()
   const [fireData, setFireData] = useState([])
   const [userEmail, setUserEmail] = useState()
   const [bug, bugSolved ] = useState(false)
   
+  const HeaderStyle = styled.div`
+  padding-top: 1.5rem;
+  `
 
 
 
@@ -59,6 +65,8 @@ export default () => {
   const [firstName, setFirstName] = useState('')
 
   const [plan, setPlan] = useState(false)
+
+  const [coco, setCoco] = useState(false)
 
 
   const firebaseConfig = {
@@ -95,7 +103,7 @@ export default () => {
       console.log(doc.id, " => ", doc.data());
       setCalories(doc.data().stringCal)
       setBodyfat(doc.data().stringFat)
-      setProts(doc.data().stringPoid * 1.7)
+      setProts(doc.data().stringPoid)
       setMaintient(doc.data().stringBej)
       setObjectifTemps(doc.data().stringTime)
       setObjectifVitesse(doc.data().stringVitesse)
@@ -131,6 +139,10 @@ export default () => {
             }
 
             
+
+            setTimeout(() => {
+              setCoco(true)
+            }, 5800);
             
                         
           
@@ -2136,8 +2148,12 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
 
 
     <div> 
+     <HeaderStyle>
+    <Header />
+</HeaderStyle>
 
-      <div  className={plan? 'invisible' : '' }>
+
+      <div  className={plan || coco? 'invisible' : '' }>
       
       
       <div className="all-effect">
@@ -2147,10 +2163,11 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
           Acces data
         </button> */}
 
-      <div id="wrapper">
+  <div id="wrapper">
   <div id="mouse"></div>
   <div className="loader">
-    
+  
+
   </div>
   <div className="loading-bar">
     <div className="progress-bar"></div>
@@ -2167,6 +2184,22 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
       </div>
 
 
+           <div className={!user && coco? '':'invisible'}>
+
+        <Hero
+        heading={<>YOU MUST BE  <Incline><HighlightedText>CONNECTED</HighlightedText></Incline></>}
+        description="Use the same email you used to pay with stripe."
+        imageSrc="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
+        imageCss={imageCss}
+        imageDecoratorBlob={true}
+        primaryButtonText="Connection"
+        watchVideoButtonText="Meet The Chefs"
+        
+          
+       
+      />
+
+          </div> 
 
       <div className={bug && plan?'' : 'invisible' }>
     <AnimationRevealPage>
@@ -2210,7 +2243,7 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
           },
           {
             imageSrc: ImageScan,
-            title: `${Math.round(prots)}g`,
+            title: `between ${Math.round(prots)*1.5}g & ${Math.round(prots)*2}g`,
             description: "Your daily protein needs. Between 1.5 et 2 times your weight (kg)",
             url: ""
           },

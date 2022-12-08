@@ -321,7 +321,7 @@
           position:relative;
           
           &:before{
-            content:"Loading";
+            content:"Chargement";
             position:absolute;
             left:0;
             top:0;
@@ -340,7 +340,7 @@
             }
           }
           &:after{
-            content:"Complete";
+            content:"Terminé";
             position:absolute;
             left:0;
             top:0;

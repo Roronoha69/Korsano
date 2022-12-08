@@ -4,7 +4,7 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import styled from 'styled-components';
 import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 import Hero from "components/hero/TwoColumnWithVideo.js";
-import Phone from "images/ordi1.png";
+//import Phone from "images/ordi1.png";
 import Features from "components/features/ThreeColWithSideImage.js";
 //import Features from "components/features/ThreeColSimple.js";
 import MainFeature from "components/features/TwoColWithButton.js";
@@ -17,7 +17,16 @@ import MainFeature3 from "components/hero/TwoColumnWithVideoY.js";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import FeatureWithSteps from "components/features/TwoColWithSteps.js";
 
+import gym from "images/hard.jpg"
+import slow from "images/slow.jpg"
+import zoro from "images/zoro.jpg"
+import eating from "images/dekuEating2.jpg"
+import baki from "images/baki.png"
+
+
+
 import Pricing from "components/hero/TwoColumnWithVideo2.js";
+
 // import chefIconImageSrc from "images/chef-icon.svg";
 // import celebrationIconImageSrc from "images/celebration-icon.svg";
 // import shopIconImageSrc from "images/shop-icon.svg";
@@ -47,38 +56,70 @@ export default () => {
   return (
     <AnimationRevealPage>
       <Hero
-        heading={<><Incline><HighlightedText>DIETS</HighlightedText></Incline> TO BULK UP FAST AS A <Incline><HighlightedText>SKINNY</HighlightedText></Incline>GUY</>  }
-        description="Personalized diets to help you stop wastiong your time and get bigger"
+        heading={<>NUTRITION<Incline><HighlightedText>SECRET'S</HighlightedText></Incline> TO MAKE ANY <Incline><HighlightedText>SKINNY</HighlightedText></Incline>GUY BULK FAST</>  }
+        description="Personalized diets to help you stop wasting your time and get bigger"
         //description="Un nouveau système unique qui permet de générer des plans nutritionels adapté à vos besoin en macronutriments."
-        imageSrc="https://cdn.dribbble.com/userupload/2850124/file/original-999c98affe282a81c153721d3d5b872b.jpeg?compress=1&resize=1200x900"
+        imageSrc={baki}
+        //imageSrc="https://cdn.dribbble.com/userupload/2850124/file/original-999c98affe282a81c153721d3d5b872b.jpeg?compress=1&resize=1200x900"
+
         imageCss={imageCss}
         imageDecoratorBlob={true}
         primaryButtonText="Essai gratuit"
         watchVideoButtonText="Nos Services"
         primaryButtonUrl='free-trial'
       />
-      <MainFeature
+
+<MainFeature
         subheading={<Subheading></Subheading>}
         
         heading={
           <>
-            YOUR GYM TIME IS A<Incline><HighlightedText>WASTE</HighlightedText></Incline>OF
-             <Incline><HighlightedText>TIME</HighlightedText></Incline>
+            YOU GO <Incline><HighlightedText>GYM</HighlightedText></Incline> BUT GET <Incline><HighlightedText>SLOW</HighlightedText></Incline>RESULTS?
+            
           </>
-
 
         }
         description={
           <Description>
-           You won't get bigger without a real bulking diet. <br />Why are you waisting your time at the gym when you're not getting in good shape anyway? 
-            
+            "I eat a lot but never gain weight" 
+            <br />I used to say this a lot until I realized that the problem was not my metabolism but my eating habits.
+          
             </Description>
         }
         buttonRounded={false}
         textOnLeft={false}
         primaryButtonUrl='/free-trial'
         primaryButtonText="Free-Trial"
-        imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15778281/media/08b44583438e4ffd3cce0426e0ca68f1.jpeg?compress=1&resize=1000x750&vertical=top"
+        //imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15778281/media/08b44583438e4ffd3cce0426e0ca68f1.jpeg?compress=1&resize=1000x750&vertical=top"
+        imageSrc={slow}
+        imageCss={imageCss}
+        imageDecoratorBlob={true}
+        imageDecoratorBlobCss={tw`left-1/2 -translate-x-1/2 md:w-32 md:h-32 opacity-25`}
+      />
+
+      <MainFeature
+        subheading={<Subheading></Subheading>}
+        
+        heading={
+          <>
+            YOUR GYM TIME IS A<Incline><HighlightedText>WASTE</HighlightedText></Incline>OF
+            <Incline><HighlightedText>TIME</HighlightedText></Incline>
+          </>
+
+
+        }
+
+        description={
+          <Description>
+          You won't get bigger without a real bulking diet. <br />Why are you waisting your time at the gym when you're not getting in good shape anyway?          
+          </Description>
+        }
+        buttonRounded={false}
+        textOnLeft={false}
+        primaryButtonUrl='/free-trial'
+        primaryButtonText="Free-Trial"
+        //imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15778281/media/08b44583438e4ffd3cce0426e0ca68f1.jpeg?compress=1&resize=1000x750&vertical=top"
+        imageSrc={gym}
         imageCss={imageCss}
         imageDecoratorBlob={true}
         imageDecoratorBlobCss={tw`left-1/2 -translate-x-1/2 md:w-32 md:h-32 opacity-25`}
@@ -89,64 +130,43 @@ export default () => {
         
         heading={
           <>
-            BECOME<Incline><HighlightedText>STRONG</HighlightedText></Incline>AND <Incline><HighlightedText>SAVAGE</HighlightedText></Incline>
-             
+            YOU WON'T BE<Incline><HighlightedText>STRONG</HighlightedText></Incline>WITHOUT A
+            <Incline><HighlightedText>PLAN</HighlightedText></Incline>
+          
           </>
 
-
+        
         }
         description={
-          <Description> We've builded a diet plan to help you achieve your gym goal faster. All the secret and all the things I wish I knew when I started. 
-            <br />Once you've build a physics with the progrma fell free to DM me you transformation. I'll s/o the best ones.
-        
-            
-            </Description>
+        <Description>Bulking diet based on eating shit tons of meat pasta and rice are complete bullshit. They aslo tells you to eat 6/5 time a day, digestion tires you all day long, etc bro WTF we are not bodybuilders.
+            <br />With work/school we can't focus on training that's why most give up bulking.
+
+
+        </Description>
         }
         buttonRounded={false}
         textOnLeft={false}
         primaryButtonUrl='/free-trial'
         primaryButtonText="Free-Trial"
-        imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15778281/media/08b44583438e4ffd3cce0426e0ca68f1.jpeg?compress=1&resize=1000x750&vertical=top"
+        //imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15778281/media/08b44583438e4ffd3cce0426e0ca68f1.jpeg?compress=1&resize=1000x750&vertical=top"
+        imageSrc={eating}
         imageCss={imageCss}
         imageDecoratorBlob={true}
         imageDecoratorBlobCss={tw`left-1/2 -translate-x-1/2 md:w-32 md:h-32 opacity-25`}
       />
 
       
-<MainFeature3
-        subheading={<Subheading></Subheading>}
-        
-        heading={
-          <>
-            BULKING DIET TO<Incline><HighlightedText>BOOST</HighlightedText></Incline>YOUR<Incline><HighlightedText>TESTOSTERONE</HighlightedText></Incline>
-             
-          </>
+      
+      
+    
 
-
-        }
-        description={
-          <Description> Stop being a looser and shut the mouth of those who underestimate you
-            <br />
-        
-            
-            </Description>
-        }
-        buttonRounded={false}
-        textOnLeft={false}
-        primaryButtonUrl='/free-trial'
-        primaryButtonText="Free-Trial"
-        imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15778281/media/08b44583438e4ffd3cce0426e0ca68f1.jpeg?compress=1&resize=1000x750&vertical=top"
-        imageCss={imageCss}
-        imageDecoratorBlob={true}
-        imageDecoratorBlobCss={tw`left-1/2 -translate-x-1/2 md:w-32 md:h-32 opacity-25`}
-      />
 
 <Testimonial 
 
 
-subheading = ""
-  heading = "Testimonials"
-  description = ""
+  subheading = ""
+  heading={<>WE BUILD LONG TERM <Incline><HighlightedText>RESULTS</HighlightedText></Incline></>}
+  description = {<>Once you get the program send me your transforation, I'll give you a shout-out</>}
   testimonials = ""
   textOnLeft = "false"
   
@@ -154,11 +174,12 @@ subheading = ""
 
 
 <Pricing 
-          heading={<>BUY<Incline><HighlightedText>NOW</HighlightedText></Incline> AND GET <Incline><HighlightedText>BIGGER</HighlightedText></Incline>FAST</>}
-          description={<>50% off with the code "100FIRST" only for the first 100
-          <br /> Get your bulking diet and stop wasting your time now
+          heading={<><Incline><HighlightedText>DON'T</HighlightedText></Incline> LET THEM GO<Incline><HighlightedText>FASTER</HighlightedText></Incline> THAN YOU </>}
+          description={<>
+          <br /> Stop wasting your time. People with a real plan are going to go faster than you. Are you really going to let that happen ? Get in before it's too late
+        
           </>}
-          imageSrc="https://cdn.dribbble.com/users/3320958/screenshots/15955423/media/ec2fe461084339c3a4d14efae1202847.jpeg?compress=1&resize=1000x750&vertical=top"
+          imageSrc={zoro}
           imageCss={imageCss}
           imageDecoratorBlob={true}
           primaryButtonText="Buy now"

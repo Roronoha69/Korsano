@@ -7,12 +7,20 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/logo.png";
+
+import "./light.scss"
+
+
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Header = tw.header`
   flex justify-between items-center
   max-w-screen-xl mx-auto
+
+  
 `;
 
 export const NavLinks = tw.div`inline-block`;
@@ -70,18 +78,61 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
    * changing the defaultLinks variable below below.
    * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
    */
+
+  const { loginWithRedirect, logout, user, isLoading } = useAuth0();
+
+
   const defaultLinks = [
     <NavLinks key={1}>
-      <NavLink href="/contact">Nous contacter</NavLink>
+      <NavLink href="/contact">Contact</NavLink>
+
+  
       
-      <NavLink href="/tarifs">Tarifs</NavLink>
-     
-      <NavLink href="/login" tw="lg:ml-12!">
+      <NavLink
+      tw="lg:ml-12!"
+      style={{cursor: 'pointer'}}
+      onClick={() =>
+        loginWithRedirect({
+          screen_hint: "signup",
+        })
+      }
+    >
+      Connexion
+    </NavLink>
+
+
+
+      {/* <NavLink href="/login" tw="lg:ml-12!">
         Connection
-      </NavLink>
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/signup">Inscription</PrimaryLink>
+      </NavLink> */}
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/free-trial">Tester gratuitement</PrimaryLink>
     </NavLinks>
   ];
+
+  const defaultLinks2 = [
+    <NavLinks key={1}>
+      <NavLink href="/contact">Contact</NavLink>
+
+      
+
+     
+      <NavLink
+      tw="lg:ml-12!"
+      style={{cursor:'poiner'}}
+      onClick={() => logout()}
+    >
+      Déconnexion
+    </NavLink>
+
+
+
+      {/* <NavLink href="/login" tw="lg:ml-12!">
+        Connection
+      </NavLink> */}
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/success">Mon programme</PrimaryLink>
+    </NavLinks>
+  ];
+
 
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
@@ -96,7 +147,12 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   logoLink = logoLink || defaultLogoLink;
   links = links || defaultLinks;
 
+  if ( user) {
+    links = defaultLinks2
+  }
+
   return (
+    <div>
     <Header className={className || "header-light"}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
@@ -112,7 +168,22 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
           {showNavLinks ? <CloseIcon tw="w-6 h-6" /> : <MenuIcon tw="w-6 h-6" />}
         </NavToggle>
       </MobileNavLinksContainer>
-    </Header>
+    </Header> 
+    <div className="sales">
+      <div className="text">
+        
+      <p className="tete"><b>OFFRE DE LANCEMENT </b></p> 
+      <p className="corps"><b>-75% pour les 50 premiers avec le code : 50FIRST</b> </p>
+     
+      <a href="beta"><b>
+        Voir</b>
+
+      </a>
+
+      
+      </div>
+    </div>
+    </div>
   );
 };
 

@@ -5,7 +5,7 @@ import tw from "twin.macro";
 import styled from "styled-components";
 import { css } from "styled-components/macro"; //eslint-disable-line
 import Header from "components/headers/light.js";
-import Footer from "components/footers/MiniCenteredFooter.js";
+import Footer from "components/footers/FiveColumnWithInputForm.js";
 import { SectionHeading } from "components/misc/Headings";
 
 const HeadingRow = tw.div`flex`;
@@ -35,7 +35,7 @@ const Text = styled.div`
   }
 `;
 
-export default ({ headingText = "Conditions Générales d'Utilisation" }) => {
+export default ({ headingText = "Terms And Condition" }) => {
   return (
     <AnimationRevealPage>
       <Header />
@@ -46,227 +46,225 @@ export default ({ headingText = "Conditions Générales d'Utilisation" }) => {
           </HeadingRow>
           <Text>
 
-          <p>Dernière mise à jour : 30 mai 2022</p>
+            <p>Last updated: April 21, 2020</p>
 
-<p>Veuillez lire attentivement ces termes et conditions avant d'utiliser Notre Service.</p>
+            <p>Please read these terms and conditions carefully before using Our Service.</p>
 
-<h1>Interprétation et définitions</h1>
-<h2>Interprétation</h2>
-<p>
-  Les mots dont la lettre initiale est en majuscule ont des significations définies dans les conditions suivantes.
-</p>
-<p>
-  Les définitions suivantes auront le même sens qu'elles apparaissent au singulier ou au
-  pluriel.
-</p>
-
-<h2>Définitions</h2>
-<p>Aux fins des présentes conditions générales :</p>
-<ul>
-  <li>
-    <strong>Affilié</strong> désigne une entité qui contrôle, est contrôlée par ou est sous contrôle commun
-    avec une partie, où « contrôle » désigne la propriété de 50 % ou plus des actions, des participations ou d'autres
-    titres habilités à voter pour l'élection des administrateurs ou d'une autre autorité de gestion.
-  </li>
-  <li>
-    <strong>Société</strong> (ci-après dénommée « la Société », « Nous », « Notre » ou « Notre » dans le présent Contrat)
-    fait référence à Treact Inc., Navi Mumbai.
-  </li>
-  <li>
-    <strong>Pays</strong> fait référence à : Maharashtra, Inde
-  </li>
-  <li>
-    <strong>Service</strong> fait référence au site Web.
-  </li>
-  <li>
-    <strong>Conditions générales</strong> (également appelées "Conditions") désignent les présentes Conditions générales qui
-    constituent l'intégralité de l'accord entre vous et la Société concernant l'utilisation du Service.
-  </li>
-  <li>
-    <strong>Service de médias sociaux tiers</strong> désigne tout service ou contenu (y compris les données,
-    informations, produits ou services) fournis par un tiers qui peuvent être affichés, inclus ou rendus
-    disponible par le Service.
-  </li>
-  <li>
-    <strong>Site Web</strong> fait référence à Treact, accessible depuis https://treact.com
-  </li>
-  <li>
-    <strong>Vous</strong> désigne la personne accédant ou utilisant le Service, ou la société, ou tout autre
-    l'entité au nom de laquelle cette personne accède ou utilise le Service, selon le cas.
-  </li>
-</ul>
-
-<h1>Reconnaissance</h1>
-<p>
-  Ce sont les termes et conditions régissant l'utilisation de ce service et l'accord qui fonctionne
-  entre vous et la Société. Les présentes conditions générales définissent les droits et obligations de tous les utilisateurs
-  concernant l'utilisation du Service.
-</p>
-<p>
-  Votre accès et votre utilisation du Service sont conditionnés par Votre acceptation et votre respect des présentes Conditions.
-  et Conditions. Ces Termes et Conditions s'appliquent à tous les visiteurs, utilisateurs et autres qui accèdent ou utilisent le
-  Service.
-</p>
-<p>
-  En accédant ou en utilisant le Service, vous acceptez d'être lié par ces Termes et Conditions. Si vous n'êtes pas d'accord
-  avec toute partie de ces Termes et Conditions, Vous ne pouvez pas accéder au Service.
-</p>
-<p>
-  Vous déclarez que vous avez plus de 18 ans. La Société n'autorise pas les moins de 18 ans à utiliser le
-  Service.
-</p>
-<p>
-  Votre accès et votre utilisation du Service sont également conditionnés par Votre acceptation et votre respect des
-  Politique de confidentialité de la Société. Notre politique de confidentialité décrit nos politiques et procédures sur la collecte,
-  l'utilisation et la divulgation de vos informations personnelles lorsque vous utilisez l'application ou le site Web et vous indique
-  sur vos droits à la vie privée et sur la manière dont la loi vous protège. Veuillez lire attentivement notre politique de confidentialité avant
-  en utilisant Notre Service.
-</p>
-
-
-
-<h1>Liens vers d'autres sites Web</h1>
+            <h1>Interpretation and Definitions</h1>
+            <h2>Interpretation</h2>
             <p>
-              Notre service peut contenir des liens vers des sites Web tiers ou des services qui ne sont pas détenus ou contrôlés par le
-              Compagnie.
+              The words of which the initial letter is capitalized have meanings defined under the following conditions.
             </p>
             <p>
-              La Société n'a aucun contrôle sur, et n'assume aucune responsabilité pour, le contenu, les politiques de confidentialité, ou
-              pratiques de tout site Web ou service tiers. Vous reconnaissez et acceptez en outre que la Société
-              ne sera pas responsable, directement ou indirectement, de tout dommage ou perte causé ou présumé être
-              causés par ou en relation avec l'utilisation ou le recours à ces contenus, biens ou services disponibles sur
-              ou par l'intermédiaire de ces sites Web ou services.
-            </p>
-            <p>
-              Nous vous conseillons vivement de lire les termes et conditions et les politiques de confidentialité de tout site Web tiers
-              ou services que vous visitez.
+              The following definitions shall have the same meaning regardless of whether they appear in singular or in
+              plural.
             </p>
 
-            <h1>Résiliation</h1>
-            <p>
-              Nous pouvons résilier ou suspendre votre accès immédiatement, sans préavis ni responsabilité, pour quelque raison que ce soit
-              que ce soit, y compris, sans s'y limiter, si vous enfreignez les présentes conditions générales.
-            </p>
-            <p>En cas de résiliation, Votre droit d'utiliser le Service cessera immédiatement.</p>
+            <h2>Definitions</h2>
+            <p>For the purposes of these Terms and Conditions:</p>
+            <ul>
+              <li>
+                <strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control
+                with a party, where "control" means ownership of 50% or more of the shares, equity interest or other
+                securities entitled to vote for election of directors or other managing authority.
+              </li>
+              <li>
+                <strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement)
+                refers to Treact Inc., Navi Mumbai.
+              </li>
+              <li>
+                <strong>Country</strong> refers to: Maharashtra, India
+              </li>
+              <li>
+                <strong>Service</strong> refers to the Website.
+              </li>
+              <li>
+                <strong>Terms and Conditions</strong> (also referred as "Terms") mean these Terms and Conditions that
+                form the entire agreement between You and the Company regarding the use of the Service.
+              </li>
+              <li>
+                <strong>Third-party Social Media Service</strong> means any services or content (including data,
+                information, products or services) provided by a third-party that may be displayed, included or made
+                available by the Service.
+              </li>
+              <li>
+                <strong>Website</strong> refers to Treact, accessible from https://treact.com
+              </li>
+              <li>
+                <strong>You</strong> means the individual accessing or using the Service, or the company, or other legal
+                entity on behalf of which such individual is accessing or using the Service, as applicable.
+              </li>
+            </ul>
 
-            <h1>Limitation de responsabilité</h1>
+            <h1>Acknowledgement</h1>
             <p>
-              Nonobstant les dommages que Vous pourriez subir, l'entière responsabilité de la Société et de l'un de ses
-              fournisseurs en vertu de toute disposition des présentes conditions et votre recours exclusif pour tout ce qui précède sera
-              limité au montant effectivement payé par vous via le service ou 100 USD si vous n'avez pas acheté
-              quoi que ce soit via le Service.
+              These are the Terms and Conditions governing the use of this Service and the agreement that operates
+              between You and the Company. These Terms and Conditions set out the rights and obligations of all users
+              regarding the use of the Service.
             </p>
             <p>
-              Dans la mesure maximale permise par la loi applicable, en aucun cas la Société ou ses fournisseurs ne seront
-              responsable de tout dommage spécial, accessoire, indirect ou consécutif (y compris, mais non
-              limité à, des dommages-intérêts pour manque à gagner, perte de données ou d'autres informations, pour interruption d'activité, pour
-              blessure corporelle, perte de vie privée résultant de ou liée de quelque manière que ce soit à l'utilisation ou à l'impossibilité d'utiliser
-              le Service, les logiciels tiers et/ou le matériel tiers utilisés avec le Service, ou autrement dans
-              relation avec toute disposition des présentes Conditions), même si la Société ou tout fournisseur a été informé de la
-              possibilité de tels dommages et même si le recours n'atteint pas son objectif essentiel.
+              Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms
+              and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the
+              Service.
             </p>
             <p>
-              Certains états n'autorisent pas l'exclusion des garanties implicites ou la limitation de responsabilité pour les dommages accessoires ou
-              dommages indirects, ce qui signifie que certaines des limitations ci-dessus peuvent ne pas s'appliquer. Dans ces états, chaque
-              la responsabilité de la partie sera limitée dans toute la mesure permise par la loi.
-            </p>
-
-            <h1>Avis de non-responsabilité "TEL QUEL" et "TEL QUE DISPONIBLE"</h1>
-            <p>
-              Le service vous est fourni "TEL QUEL" et "TEL QUE DISPONIBLE" et avec tous les défauts et défauts sans garantie
-              de toute nature. Dans toute la mesure permise par la loi applicable, la Société, en son propre nom et au
-              au nom de ses Affiliés et de leurs concédants de licence et fournisseurs de services respectifs, décline expressément
-              toutes les garanties, expresses, implicites, statutaires ou autres, concernant le Service, y compris
-              toutes les garanties implicites de qualité marchande, d'adéquation à un usage particulier, de titre et de non-contrefaçon,
-              et les garanties pouvant découler du cours des transactions, des performances, de l'utilisation ou des pratiques commerciales.
-              Sans limitation à ce qui précède, la Société ne fournit aucune garantie ou engagement, et ne fait aucun
-              représentation de quelque nature que ce soit que le Service répondra à Vos exigences, atteindra les résultats escomptés, sera
-              compatible ou fonctionne avec tout autre logiciel, application, système ou service, fonctionne sans
-              interruption, répondre à toutes les normes de performance ou de fiabilité ou être sans erreur ou que des erreurs ou des défauts
-              peut ou sera corrigé.
+              By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree
+              with any part of these Terms and Conditions then You may not access the Service.
             </p>
             <p>
-              Sans limiter ce qui précède, ni la Société ni aucun de ses fournisseurs ne fait aucun
-              représentation ou garantie de quelque nature que ce soit, expresse ou tacite : (i) quant au fonctionnement ou à la disponibilité du
-              Service, ou les informations, le contenu et les matériaux ou produits qui y sont inclus ; (ii) que le Service
-              sera ininterrompu ou sans erreur ; (iii) quant à l'exactitude, la fiabilité ou l'actualité de toute information
-              ou du contenu fourni via le Service ; ou (iv) que le Service, ses serveurs, le contenu ou les e-mails
-              envoyés par ou au nom de la Société sont exempts de virus, scripts, chevaux de Troie, vers, logiciels malveillants,
-              bombes à retardement ou autres composants nocifs.
+              You represent that you are over the age of 18. The Company does not permit those under 18 to use the
+              Service.
             </p>
             <p>
-              Certaines juridictions n'autorisent pas l'exclusion de certains types de garanties ou de limitations sur les
-              droits statutaires d'un consommateur, de sorte que certaines ou toutes les exclusions et limitations ci-dessus peuvent ne pas s'appliquer à
-              Tu. Mais dans un tel cas, les exclusions et limitations énoncées dans la présente section s'appliqueront au
-              dans la mesure du possible exécutoire en vertu de la loi applicable.
-            </p>
-
-            <h1>Loi applicable</h1>
-            <p>
-              Les lois du pays, à l'exclusion de ses règles de conflits de lois, régiront les présentes conditions et votre utilisation du
-              Service. Votre utilisation de l'Application peut également être soumise à d'autres réglementations locales, étatiques, nationales ou internationales.
-              lois.
+              Your access to and use of the Service is also conditioned on Your acceptance of and compliance with the
+              Privacy Policy of the Company. Our Privacy Policy describes Our policies and procedures on the collection,
+              use and disclosure of Your personal information when You use the Application or the Website and tells You
+              about Your privacy rights and how the law protects You. Please read Our Privacy Policy carefully before
+              using Our Service.
             </p>
 
-            <h1>Résolution des litiges</h1>
+            <h1>Links to Other Websites</h1>
             <p>
-              Si vous avez des préoccupations ou un différend concernant le service, vous acceptez d'abord d'essayer de résoudre le différend
-              de manière informelle en contactant la Société.
+              Our Service may contain links to third-party web sites or services that are not owned or controlled by the
+              Company.
+            </p>
+            <p>
+              The Company has no control over, and assumes no responsibility for, the content, privacy policies, or
+              practices of any third party web sites or services. You further acknowledge and agree that the Company
+              shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be
+              caused by or in connection with the use of or reliance on any such content, goods or services available on
+              or through any such web sites or services.
+            </p>
+            <p>
+              We strongly advise You to read the terms and conditions and privacy policies of any third-party web sites
+              or services that You visit.
             </p>
 
-            <h1>Pour les utilisateurs de l'Union européenne (UE)</h1>
+            <h1>Termination</h1>
             <p>
-              Si vous êtes un consommateur de l'Union européenne, vous bénéficierez de toutes les dispositions impératives de la loi du
-              pays dans lequel vous résidez.
+              We may terminate or suspend Your access immediately, without prior notice or liability, for any reason
+              whatsoever, including without limitation if You breach these Terms and Conditions.
+            </p>
+            <p>Upon termination, Your right to use the Service will cease immediately.</p>
+
+            <h1>Limitation of Liability</h1>
+            <p>
+              Notwithstanding any damages that You might incur, the entire liability of the Company and any of its
+              suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be
+              limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased
+              anything through the Service.
+            </p>
+            <p>
+              To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be
+              liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not
+              limited to, damages for loss of profits, loss of data or other information, for business interruption, for
+              personal injury, loss of privacy arising out of or in any way related to the use of or inability to use
+              the Service, third-party software and/or third-party hardware used with the Service, or otherwise in
+              connection with any provision of this Terms), even if the Company or any supplier has been advised of the
+              possibility of such damages and even if the remedy fails of its essential purpose.
+            </p>
+            <p>
+              Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or
+              consequential damages, which means that some of the above limitations may not apply. In these states, each
+              party's liability will be limited to the greatest extent permitted by law.
             </p>
 
-            <h1>Conformité légale aux États-Unis</h1>
+            <h1>"AS IS" and "AS AVAILABLE" Disclaimer</h1>
             <p>
-              Vous déclarez et garantissez que (i) vous n'êtes pas situé dans un pays soumis aux États-Unis
-              embargo gouvernemental, ou qui a été désigné par le gouvernement des États-Unis comme un « terroriste
-              pays de soutien », et (ii) Vous ne figurez sur aucune liste du gouvernement des États-Unis des pays interdits ou
-              parties restreintes.
+              The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty
+              of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on
+              behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims
+              all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including
+              all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement,
+              and warranties that may arise out of course of dealing, course of performance, usage or trade practice.
+              Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no
+              representation of any kind that the Service will meet Your requirements, achieve any intended results, be
+              compatible or work with any other software, applications, systems or services, operate without
+              interruption, meet any performance or reliability standards or be error free or that any errors or defects
+              can or will be corrected.
+            </p>
+            <p>
+              Without limiting the foregoing, neither the Company nor any of the company's provider makes any
+              representation or warranty of any kind, express or implied: (i) as to the operation or availability of the
+              Service, or the information, content, and materials or products included thereon; (ii) that the Service
+              will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information
+              or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails
+              sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware,
+              timebombs or other harmful components.
+            </p>
+            <p>
+              Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable
+              statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to
+              You. But in such a case the exclusions and limitations set forth in this section shall be applied to the
+              greatest extent enforceable under applicable law.
             </p>
 
-            <h1>Divisibilité et renonciation</h1>
-            <h2>Divisibilité</h2>
+            <h1>Governing Law</h1>
             <p>
-              Si une disposition de ces Conditions est jugée inapplicable ou invalide, cette disposition sera modifiée et
-              interprétée pour atteindre les objectifs de cette disposition dans toute la mesure du possible en vertu de
-              loi applicable et les dispositions restantes resteront en vigueur et de plein effet.
+              The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the
+              Service. Your use of the Application may also be subject to other local, state, national, or international
+              laws.
             </p>
 
-            <h2>Renonciation</h2>
+            <h1>Disputes Resolution</h1>
             <p>
-              Sauf disposition contraire des présentes, le défaut d'exercer un droit ou d'exiger l'exécution d'une obligation
-              en vertu des présentes conditions n'affectera pas la capacité d'une partie à exercer ce droit ou à exiger une telle exécution à
-              à tout moment par la suite et la renonciation à un manquement ne constituera pas non plus une renonciation à tout manquement ultérieur.
+              If You have any concern or dispute about the Service, You agree to first try to resolve the dispute
+              informally by contacting the Company.
             </p>
 
-            <h1>Traduction Interprétation</h1>
+            <h1>For European Union (EU) Users</h1>
             <p>
-              Ces Termes et Conditions peuvent avoir été traduits si Nous les avons mis à Votre disposition sur notre Service.
-            </p>
-            <p>Vous acceptez que le texte original en anglais prévaut en cas de litige.</p>
-
-            <h1>Modifications de ces conditions générales</h1>
-            <p>
-              Nous nous réservons le droit, à Notre seule discrétion, de modifier ou de remplacer ces Conditions à tout moment. Si une révision
-              est important Nous ferons des efforts raisonnables pour fournir un préavis d'au moins 30 jours avant toute nouvelle condition
-              prenant effet. Ce qui constitue un changement important sera déterminé à Notre seule discrétion.
-            </p>
-            <p>
-              En continuant à accéder ou à utiliser Notre Service après l'entrée en vigueur de ces révisions, Vous acceptez d'être lié
-              par les termes révisés. Si vous n'acceptez pas les nouvelles conditions, en tout ou en partie, veuillez cesser d'utiliser le
-              site Web et le Service.
+              If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the
+              country in which you are resident in.
             </p>
 
-            <h1>Contactez-nous</h1>
-            <p>Si vous avez des questions sur ces conditions générales, vous pouvez nous contacter :</p>
+            <h1>United States Legal Compliance</h1>
+            <p>
+              You represent and warrant that (i) You are not located in a country that is subject to the United States
+              government embargo, or that has been designated by the United States government as a “terrorist
+              supporting” country, and (ii) You are not listed on any United States government list of prohibited or
+              restricted parties.
+            </p>
+
+            <h1>Severability and Waiver</h1>
+            <h2>Severability</h2>
+            <p>
+              If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and
+              interpreted to accomplish the objectives of such provision to the greatest extent possible under
+              applicable law and the remaining provisions will continue in full force and effect.
+            </p>
+
+            <h2>Waiver</h2>
+            <p>
+              Except as provided herein, the failure to exercise a right or to require performance of an obligation
+              under this Terms shall not effect a party's ability to exercise such right or require such performance at
+              any time thereafter nor shall be the waiver of a breach constitute a waiver of any subsequent breach.
+            </p>
+
+            <h1>Translation Interpretation</h1>
+            <p>
+              These Terms and Conditions may have been translated if We have made them available to You on our Service.
+            </p>
+            <p>You agree that the original English text shall prevail in the case of a dispute.</p>
+
+            <h1>Changes to These Terms and Conditions</h1>
+            <p>
+              We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision
+              is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms
+              taking effect. What constitutes a material change will be determined at Our sole discretion.
+            </p>
+            <p>
+              By continuing to access or use Our Service after those revisions become effective, You agree to be bound
+              by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the
+              website and the Service.
+            </p>
+
+            <h1>Contact Us</h1>
+            <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
 
             <ul>
-              <li>Par e-mail : support@example.com</li>
-              <li>Par numéro de téléphone : 408.996.1010</li>
+              <li>By email: support@example.com</li>
+              <li>By phone number: 408.996.1010</li>
             </ul>
           </Text>
         </ContentWithPaddingXl>

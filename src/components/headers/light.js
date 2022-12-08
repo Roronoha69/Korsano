@@ -7,6 +7,10 @@ import { css } from "styled-components/macro"; //eslint-disable-line
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
 import logo from "../../images/logo.png";
+
+import "./light.scss"
+
+
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
 
@@ -93,7 +97,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
         })
       }
     >
-      Connection
+      Connexion
     </NavLink>
 
 
@@ -101,7 +105,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       {/* <NavLink href="/login" tw="lg:ml-12!">
         Connection
       </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/free-trial">Free Trail</PrimaryLink>
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/free-trial">Tester gratuitement</PrimaryLink>
     </NavLinks>
   ];
 
@@ -117,7 +121,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       style={{cursor:'poiner'}}
       onClick={() => logout()}
     >
-      Disconnection
+      Déconnexion
     </NavLink>
 
 
@@ -125,7 +129,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       {/* <NavLink href="/login" tw="lg:ml-12!">
         Connection
       </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/error">My program</PrimaryLink>
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/success">Mon programme</PrimaryLink>
     </NavLinks>
   ];
 
@@ -148,6 +152,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   }
 
   return (
+  
     <Header className={className || "header-light"}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
@@ -163,7 +168,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
           {showNavLinks ? <CloseIcon tw="w-6 h-6" /> : <MenuIcon tw="w-6 h-6" />}
         </NavToggle>
       </MobileNavLinksContainer>
-    </Header>
+    </Header> 
+    
   );
 };
 

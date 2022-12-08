@@ -1,7 +1,7 @@
 import React from 'react'
 import './Freetrial.scss'
 import {useState} from 'react'
-import Footer from "components/footers/MiniCenteredFooter2.js";
+import Footer from "components/footers/MiniCenteredFooter.js";
 import Feature from "components/features/TwoColSingleFeatureWithStats3";
 import Header from "components/headers/light.js";
 import styled from "styled-components";
@@ -848,7 +848,7 @@ if (paramsCal > 3100 && paramsCal <= 3200) {
           {
             imageSrc: ImageScan,
             //title: `${Math.round(prots)}g`,
-            title: `entre ${Math.round(poid)*1.5}g et ${Math.round(poid)*2}g`,
+            title: `between ${Math.round(poid)*1.5}g & ${Math.round(poid)*2}g`,
             description: "Your daily protein needs. Between 1.5 et 2 times your weight (kg)",
             url: ""
           },

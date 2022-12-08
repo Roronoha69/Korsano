@@ -1,7 +1,7 @@
 import React from 'react'
 import './Qcm.scss'
 import {useState} from 'react'
-import Footer from "components/footers/MiniCenteredFooter2.js";
+import Footer from "components/footers/MiniCenteredFooter.js";
 import Feature from "components/features/TwoColSingleFeatureWithStats3";
 import Header from "components/headers/light.js";
 import styled from "styled-components";
